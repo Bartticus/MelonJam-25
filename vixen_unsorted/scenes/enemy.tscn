@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://qrp2qrl5esb7"]
+
+[ext_resource type="Script" uid="uid://cxjn8xymotref" path="res://vixen_unsorted/scripts/enemy.gd" id="1_mgaaf"]
+
+[node name="CharacterBody3D" type="CharacterBody3D"]
+script = ExtResource("1_mgaaf")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
