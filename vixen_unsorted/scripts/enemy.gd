@@ -1,13 +1,20 @@
+class_name Enemy
 extends CharacterBody3D
 
-var player
+#var player
 const speed = 100
 
-func _ready() -> void:
+#func _ready() -> void:
 	#Change Dummy to player in future
-	player = get_tree().current_scene.get_node("Dummy")
+	#player = get_tree().current_scene.get_node("Dummy")
 
 func _physics_process(delta: float) -> void:
-	var direction = position.direction_to(player.position)
+	var direction = position.direction_to(Global.player.position)
 	velocity = direction * speed * delta
 	move_and_slide()
+
+func die() -> void:
+	#death animation
+	#drop mask
+	
+	queue_free()

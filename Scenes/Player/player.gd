@@ -1,20 +1,22 @@
 class_name Player
 extends CharacterBody3D
 
-#Physics variables
 var movement_vector := Vector3.ZERO
-var speed: float = 20.0
-var accel: float = 2.0
 var gravity: float = 9.8
+@export var speed: float = 20.0
+@export var accel: float = 2.0
 
+@onready var weapon_anim_plr: AnimationPlayer = $WeaponPivot/WeaponAnimPlayer
 
-func _physics_process(_delta):
+func _ready() -> void:
+	Global.player = self
+
+func _physics_process(_delta) -> void:
 	handle_movement()
 	
 	player_look_at_cursor()
 
-
-func handle_movement():
+func handle_movement() -> void:
 	var horizontal_input := Vector3.ZERO
 	horizontal_input.x = Input.get_axis("move_left", "move_right")
 	horizontal_input.z = Input.get_axis("move_up", "move_down")
@@ -28,8 +30,7 @@ func handle_movement():
 	
 	move_and_slide()
 
-
-func player_look_at_cursor():
+func player_look_at_cursor() -> void:
 	var space_state = get_world_3d().direct_space_state
 	var mouse_position = get_viewport().get_mouse_position()
 	var camera: Camera3D = get_viewport().get_camera_3d()
@@ -43,7 +44,11 @@ func player_look_at_cursor():
 	if not intersection.is_empty():
 		var pos = intersection.position
 		look_at(Vector3(pos.x, 0, pos.z)) #Player looks at ray intersection
-		rotate_y(deg_to_rad(90))
 	
 	rotation.x = 0 #Reset the player's rotation to keep him vertical
 	rotation.z = 0
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("attack") and not weapon_anim_plr.is_playing():
+		weapon_anim_plr.play("swing")
+		

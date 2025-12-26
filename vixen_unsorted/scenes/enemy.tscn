@@ -1,8 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://qrp2qrl5esb7"]
+[gd_scene load_steps=3 format=3 uid="uid://qrp2qrl5esb7"]
 
 [ext_resource type="Script" uid="uid://cxjn8xymotref" path="res://vixen_unsorted/scripts/enemy.gd" id="1_mgaaf"]
 
-[node name="CharacterBody3D" type="CharacterBody3D"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_mgaaf"]
+
+[node name="CharacterBody3D" type="CharacterBody3D" groups=["enemies"]]
+collision_layer = 4
+collision_mask = 3
 script = ExtResource("1_mgaaf")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_mgaaf")
