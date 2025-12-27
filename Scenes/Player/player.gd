@@ -10,11 +10,15 @@ var gravity: float = 9.8
 
 @export var restart_screen: CanvasLayer
 
+var dead = false
 
 func _ready() -> void:
 	Global.player = self
 
 func _physics_process(_delta) -> void:
+	if dead:
+		return
+	
 	handle_movement()
 	
 	player_look_at_cursor()
@@ -74,5 +78,7 @@ func equip_mask(mask_type: String) -> void:
 			pass
 		
 func get_damage():
+	dead = true
+	visible = false
 	restart_screen.visible = true
 	print("Player died")
