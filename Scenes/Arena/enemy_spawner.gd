@@ -15,10 +15,6 @@ const ENEMIES = [
 func _ready() -> void:
 	timer.wait_time = curve.sample(0)
 	timer.start()
-	#_spawn_enemy(0)
-	#_spawn_enemy(1)
-	#_spawn_enemy(2)
-	#_spawn_enemy(2)
 
 func _spawn_enemy():
 	var index = randi_range(0, 2)

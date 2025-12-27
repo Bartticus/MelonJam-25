@@ -8,6 +8,8 @@ var gravity: float = 9.8
 
 @export var current_mask: String = "Default"
 
+@export var restart_screen: CanvasLayer
+
 
 func _ready() -> void:
 	Global.player = self
@@ -72,4 +74,5 @@ func equip_mask(mask_type: String) -> void:
 			pass
 		
 func get_damage():
+	restart_screen.visible = true
 	print("Player died")
