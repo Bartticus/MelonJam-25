@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://pi0a4eh85tu8"]
+[gd_scene load_steps=11 format=3 uid="uid://pi0a4eh85tu8"]
 
-[ext_resource type="Texture2D" uid="uid://d3sjj1gxysnqy" path="res://bartticus/texture_01.png" id="1_cwgqa"]
-[ext_resource type="PackedScene" uid="uid://bipe8iju31m6v" path="res://Scenes/Player/player.tscn" id="2_2c3ow"]
-[ext_resource type="Script" uid="uid://con6os5ranflg" path="res://Scenes/Arena/enemy_spawner.gd" id="3_p11uh"]
+[ext_resource type="Texture2D" uid="uid://d3sjj1gxysnqy" path="res://bartticus/texture_01.png" id="1_6o3nl"]
+[ext_resource type="PackedScene" uid="uid://bipe8iju31m6v" path="res://Scenes/Player/player.tscn" id="2_rm3sm"]
+[ext_resource type="Script" uid="uid://con6os5ranflg" path="res://Scenes/Arena/enemy_spawner.gd" id="3_t7yvt"]
+[ext_resource type="Script" uid="uid://xjy4xv8r2wew" path="res://Scripts/mount_camera.gd" id="4_rm3sm"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3vb8q"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -17,7 +18,7 @@ sky = SubResource("Sky_8h603")
 tonemap_mode = 2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oqstw"]
-albedo_texture = ExtResource("1_cwgqa")
+albedo_texture = ExtResource("1_6o3nl")
 uv1_scale = Vector3(0.25, 0.25, 0.25)
 uv1_triplanar = true
 
@@ -50,14 +51,18 @@ skeleton = NodePath("../..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="World/Floor"]
 shape = SubResource("CylinderShape3D_8h603")
 
-[node name="Player" parent="." instance=ExtResource("2_2c3ow")]
+[node name="Player" parent="." instance=ExtResource("2_rm3sm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-collision_layer = 2
 collision_mask = 5
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 19.167917, 0)
-current = true
-
 [node name="EnemySpawner" type="Node" parent="."]
-script = ExtResource("3_p11uh")
+script = ExtResource("3_t7yvt")
+
+[node name="Fireballs" type="Node" parent="."]
+
+[node name="Mount" type="Node3D" parent="."]
+script = ExtResource("4_rm3sm")
+
+[node name="Camera3D" type="Camera3D" parent="Mount"]
+transform = Transform3D(1, 0, 0, 0, 0.3971479, 0.91775465, 0, -0.91775465, 0.3971479, 0, 17.672, 6.383)
+current = true

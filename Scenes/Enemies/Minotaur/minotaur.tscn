@@ -1,0 +1,125 @@
+[gd_scene load_steps=9 format=3 uid="uid://cwcp6ckkq3arf"]
+
+[ext_resource type="PackedScene" uid="uid://qrp2qrl5esb7" path="res://Scenes/Enemies/enemy.tscn" id="1_pkuws"]
+[ext_resource type="Script" uid="uid://c3yi675gd5wl0" path="res://Scenes/Enemies/state_object.gd" id="2_isjdv"]
+[ext_resource type="Script" uid="uid://bakfne7rbociq" path="res://Scenes/Enemies/Minotaur/minotaur_move.gd" id="2_jcmg5"]
+[ext_resource type="Script" uid="uid://ddt47aaa1ejuw" path="res://Scenes/Enemies/Minotaur/minotaur_attack.gd" id="4_f7lsa"]
+
+[sub_resource type="Animation" id="Animation_jcmg5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mount:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.8, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Mount:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.56796503, -0.22392574, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_pkuws"]
+resource_name = "swing"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mount:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.36666667, 0.65, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.8, 0, 0), Vector3(1.2607297, 0, -0.48000064), Vector3(0.3042018, 0, -1.2577794), Vector3(-0.76512384, 0, -0.79002106)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Mount:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.36666667, 0.65, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.56796503, -0.22392574, 0), Vector3(0, -0.75398225, 0), Vector3(0, -0.0740019, 0), Vector3(0, 0.9138894, 0)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("StateMachine/MinotaurAttack")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"end_of_anim"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_isjdv"]
+_data = {
+&"RESET": SubResource("Animation_jcmg5"),
+&"swing": SubResource("Animation_pkuws")
+}
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_f7lsa"]
+radius = 0.057617188
+
+[node name="Enemy" instance=ExtResource("1_pkuws")]
+
+[node name="StateMachine" parent="." index="2" node_paths=PackedStringArray("initial_state")]
+initial_state = NodePath("MinotaurMove")
+
+[node name="StateObject" type="Node" parent="StateMachine" index="0" node_paths=PackedStringArray("enemy", "anim_player")]
+script = ExtResource("2_isjdv")
+enemy = NodePath("../..")
+anim_player = NodePath("../../AnimationPlayer")
+
+[node name="MinotaurMove" type="Node" parent="StateMachine" index="1" node_paths=PackedStringArray("so")]
+script = ExtResource("2_jcmg5")
+so = NodePath("../StateObject")
+metadata/_custom_type_script = "uid://bakfne7rbociq"
+
+[node name="MinotaurAttack" type="Node" parent="StateMachine" index="2" node_paths=PackedStringArray("so")]
+script = ExtResource("4_f7lsa")
+so = NodePath("../StateObject")
+metadata/_custom_type_script = "uid://ddt47aaa1ejuw"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="3"]
+libraries = {
+&"": SubResource("AnimationLibrary_isjdv")
+}
+
+[node name="Mount" type="Node3D" parent="." index="4"]
+transform = Transform3D(0.97503316, -0.11944949, -0.18719518, 0, 0.8429974, -0.5379176, 0.22205904, 0.5244876, 0.8219504, 0.8, 0, 0)
+
+[node name="Axe" type="CSGCylinder3D" parent="Mount" index="0"]
+transform = Transform3D(1, 0, 0, 0, -4.3711392e-08, -1, 0, 1.0000001, -4.371139e-08, 0, 0, -0.84)
+radius = 0.048
+
+[node name="Area3D" type="Area3D" parent="Mount" index="1"]
+transform = Transform3D(1, 0, 0, -7.450581e-09, -5.9604645e-08, -1, 1.4901161e-08, 1.0000001, -5.9604645e-08, 5.9604645e-08, 2.2351742e-08, -0.8399999)
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Mount/Area3D" index="0"]
+transform = Transform3D(1, -1.4901161e-08, -5.9604645e-08, 4.4703484e-08, 1, 8.940697e-08, 3.7252903e-08, 2.9802322e-08, 1, 0, -5.9604645e-08, 2.9802322e-08)
+shape = SubResource("CapsuleShape3D_f7lsa")
+
+[connection signal="body_entered" from="Mount/Area3D" to="StateMachine/MinotaurAttack" method="_on_area_3d_body_entered"]

@@ -71,3 +71,5 @@ func equip_mask(mask_type: String) -> void:
 			#wolf stuff
 			pass
 		
+func get_damage():
+	print("Player died")
