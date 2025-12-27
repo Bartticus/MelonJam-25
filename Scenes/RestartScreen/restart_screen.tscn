@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://moswwloabatl"]
+
+[ext_resource type="Theme" uid="uid://fkqkh28hofcv" path="res://main_theme.tres" id="1_m4fy1"]
+[ext_resource type="Script" uid="uid://ncvw35juesxo" path="res://Scenes/RestartScreen/button.gd" id="2_vl6m8"]
+
+[node name="RestartScreen" type="CanvasLayer"]
+
+[node name="Button" type="Button" parent="."]
+offset_left = 335.0
+offset_top = 301.0
+offset_right = 595.0
+offset_bottom = 397.0
+theme = ExtResource("1_m4fy1")
+theme_override_font_sizes/font_size = 56
+text = "Restart"
+script = ExtResource("2_vl6m8")
+
+[connection signal="pressed" from="Button" to="Button" method="_on_pressed"]

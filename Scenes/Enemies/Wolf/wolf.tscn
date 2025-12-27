@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://bdnyc3xaifmi6"]
+[gd_scene load_steps=6 format=3 uid="uid://bdnyc3xaifmi6"]
 
 [ext_resource type="PackedScene" uid="uid://qrp2qrl5esb7" path="res://Scenes/Enemies/enemy.tscn" id="1_tyws3"]
 [ext_resource type="Script" uid="uid://c3yi675gd5wl0" path="res://Scenes/Enemies/state_object.gd" id="2_aln4i"]
 [ext_resource type="Script" uid="uid://dkymhfy8efj85" path="res://Scenes/Enemies/Wolf/wolf_walk.gd" id="3_se4m8"]
 [ext_resource type="Script" uid="uid://bg1by12crfox6" path="res://Scenes/Enemies/Wolf/wolf_attack.gd" id="4_fij6b"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fij6b"]
 
 [node name="Enemy" instance=ExtResource("1_tyws3")]
 
@@ -20,9 +22,19 @@ script = ExtResource("3_se4m8")
 so = NodePath("../StateObject")
 metadata/_custom_type_script = "uid://dkymhfy8efj85"
 
-[node name="WolfAttack" type="Node" parent="StateMachine" index="2" node_paths=PackedStringArray("so")]
+[node name="WolfAttack" type="Node" parent="StateMachine" index="2" node_paths=PackedStringArray("so", "area")]
 script = ExtResource("4_fij6b")
 so = NodePath("../StateObject")
+area = NodePath("../../Area3D")
 metadata/_custom_type_script = "uid://bg1by12crfox6"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="3"]
+
+[node name="Area3D" type="Area3D" parent="." index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5266063)
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0"]
+shape = SubResource("BoxShape3D_fij6b")
+
+[connection signal="body_entered" from="Area3D" to="StateMachine/WolfAttack" method="_on_area_3d_body_entered"]
