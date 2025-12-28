@@ -7,8 +7,8 @@ var movement_vector := Vector3.ZERO
 var gravity: float = 9.8
 @export var speed: float = 20.0
 @export var accel: float = 2.0
-
 @export var turn_speed: float = 1.0
+
 
 @export var current_mask: String = "Default"
 signal mask_changed

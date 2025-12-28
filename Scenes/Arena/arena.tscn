@@ -41,24 +41,25 @@ transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 1, 0)
 collision_mask = 5
 restart_screen = NodePath("../RestartScreen")
 
-[node name="EnemySpawner" type="Node" parent="." node_paths=PackedStringArray("timer")]
+[node name="EnemySpawner" type="Node" parent="." node_paths=PackedStringArray("timer", "spawn_points")]
 script = ExtResource("3_t7yvt")
 curve = SubResource("Curve_rm3sm")
 timer = NodePath("Timer")
+spawn_points = [NodePath("NorthSpawn"), NodePath("EastSpawn"), NodePath("SouthSpawn"), NodePath("WestSpawn")]
 
 [node name="Timer" type="Timer" parent="EnemySpawner"]
 
-[node name="Marker3D" type="Marker3D" parent="EnemySpawner"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, 0)
+[node name="NorthSpawn" type="Marker3D" parent="EnemySpawner"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -32)
 
-[node name="Marker3D2" type="Marker3D" parent="EnemySpawner"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 35)
+[node name="EastSpawn" type="Marker3D" parent="EnemySpawner"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32, 0, 0)
 
-[node name="Marker3D3" type="Marker3D" parent="EnemySpawner"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0, 0)
+[node name="SouthSpawn" type="Marker3D" parent="EnemySpawner"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 32)
 
-[node name="Marker3D4" type="Marker3D" parent="EnemySpawner"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -35)
+[node name="WestSpawn" type="Marker3D" parent="EnemySpawner"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32, 0, 0)
 
 [node name="Fireballs" type="Node" parent="."]
 
@@ -73,6 +74,7 @@ current = true
 visible = false
 
 [node name="Colosseum" parent="." instance=ExtResource("5_11not")]
+transform = Transform3D(-8.742278e-08, 0, 2, 0, 2, 0, -2, 0, -8.742278e-08, 0, 0, 0)
 
 [node name="BGMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_11not")

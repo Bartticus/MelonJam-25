@@ -686,13 +686,13 @@ initial_state = NodePath("DragonMove")
 
 [node name="StateObject" type="Node" parent="StateMachine" index="0" node_paths=PackedStringArray("enemy")]
 script = ExtResource("2_eq8bp")
+speed = 75
 enemy = NodePath("../..")
 turn_speed = 0.005
 
 [node name="DragonMove" type="Node" parent="StateMachine" index="1" node_paths=PackedStringArray("so")]
 script = ExtResource("3_ua7uq")
 so = NodePath("../StateObject")
-distance_for_attack = 7
 metadata/_custom_type_script = "uid://d3lafbojhaifj"
 
 [node name="DragonAttack" type="Node" parent="StateMachine" index="2" node_paths=PackedStringArray("so", "spawpoint")]
@@ -709,13 +709,13 @@ size = Vector3(0.5800781, 0.45336914, 0.32983398)
 [node name="Spawnpoint" type="Node3D" parent="." index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.7683716e-07, 2.70155, -5.618104)
 
-[node name="DragonFixed3" type="Node3D" parent="." index="5"]
-transform = Transform3D(-0.3, 0, -4.5298744e-08, 0, 0.3, 0, 4.5298744e-08, 0, -0.3, 0, 0, 0)
+[node name="Dragon" type="Node3D" parent="." index="5"]
+transform = Transform3D(-0.3, 0, -4.5298744e-08, 0, 0.3, 0, 4.5298744e-08, 0, -0.3, 0, -0.4, 0)
 
-[node name="Dinobones" type="Node3D" parent="DragonFixed3" index="0"]
+[node name="Dinobones" type="Node3D" parent="Dragon" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
 
-[node name="Skeleton3D" type="Skeleton3D" parent="DragonFixed3/Dinobones" index="0"]
+[node name="Skeleton3D" type="Skeleton3D" parent="Dragon/Dinobones" index="0"]
 bones/0/name = "Bone"
 bones/0/parent = -1
 bones/0/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
@@ -885,11 +885,11 @@ bones/23/position = Vector3(0, 4, 6.039832e-07)
 bones/23/rotation = Quaternion(-0.6830126, 0.18301252, 0.18301292, 0.6830128)
 bones/23/scale = Vector3(1, 1.0000001, 1.0000001)
 
-[node name="dinosor" type="MeshInstance3D" parent="DragonFixed3/Dinobones/Skeleton3D" index="0"]
+[node name="dinosor" type="MeshInstance3D" parent="Dragon/Dinobones/Skeleton3D" index="0"]
 mesh = SubResource("ArrayMesh_xb05l")
 skin = SubResource("Skin_2o4lv")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="DragonFixed3" index="1"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Dragon" index="1"]
 libraries = {
 &"": SubResource("AnimationLibrary_2mgy0")
 }

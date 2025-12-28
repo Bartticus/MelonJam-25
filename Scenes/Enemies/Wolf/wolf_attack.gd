@@ -1,7 +1,7 @@
 extends State
 class_name WolfAttack
 
-@export var so: Node
+@export var so: StateObject
 @export var attack_distance: float = 5
 @export var area: Area3D
 const WOLF_ANIM_LIBRARY = preload("uid://2kmeaaeet3n0")

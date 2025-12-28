@@ -10,7 +10,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Minotaure3/Mount:position")
+tracks/0/path = NodePath("Minotaur/Mount:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -22,7 +22,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Minotaure3/Mount:rotation")
+tracks/1/path = NodePath("Minotaur/Mount:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -37,7 +37,7 @@ resource_name = "swing"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Minotaure3/Mount:position")
+tracks/0/path = NodePath("Minotaur/Mount:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -49,7 +49,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Minotaure3/Mount:rotation")
+tracks/1/path = NodePath("Minotaur/Mount:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -592,16 +592,13 @@ enemy_type = "Minotaur"
 [node name="CSGBox3D" parent="." index="0"]
 visible = false
 
-[node name="CollisionShape3D" parent="." index="1"]
-visible = false
-
 [node name="StateMachine" parent="." index="2" node_paths=PackedStringArray("initial_state")]
 initial_state = NodePath("MinotaurMove")
 
 [node name="StateObject" type="Node" parent="StateMachine" index="0" node_paths=PackedStringArray("enemy", "anim_player")]
 script = ExtResource("2_isjdv")
 enemy = NodePath("../..")
-anim_player = NodePath("../../Minotaure3/AnimationPlayer")
+anim_player = NodePath("../../Minotaur/AnimationPlayer")
 
 [node name="MinotaurMove" type="Node" parent="StateMachine" index="1" node_paths=PackedStringArray("so")]
 script = ExtResource("2_jcmg5")
@@ -619,13 +616,13 @@ libraries = {
 &"": SubResource("AnimationLibrary_isjdv")
 }
 
-[node name="Minotaure3" type="Node3D" parent="." index="4"]
+[node name="Minotaur" type="Node3D" parent="." index="4"]
 transform = Transform3D(-0.3, 0, -4.5298744e-08, 0, 0.3, 0, 4.5298744e-08, 0, -0.3, 0, 0.6494336, 0)
 
-[node name="minorig" type="Node3D" parent="Minotaure3" index="0"]
+[node name="minorig" type="Node3D" parent="Minotaur" index="0"]
 transform = Transform3D(2.1000001, 0, 0, 0, 2.1000001, 0, 0, 0, 2.1000001, 0, 0, 0)
 
-[node name="Skeleton3D" type="Skeleton3D" parent="Minotaure3/minorig" index="0"]
+[node name="Skeleton3D" type="Skeleton3D" parent="Minotaur/minorig" index="0"]
 bones/0/name = "Bone"
 bones/0/parent = -1
 bones/0/rest = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0)
@@ -767,32 +764,32 @@ bones/19/position = Vector3(1.2440407e-16, 1.2316931, 0.52196604)
 bones/19/rotation = Quaternion(0.88197577, 4.8979913e-08, 1.0147215e-07, 0.4712948)
 bones/19/scale = Vector3(0.99999994, 0.9999999, 0.9999998)
 
-[node name="MINOTAURE" type="MeshInstance3D" parent="Minotaure3/minorig/Skeleton3D" index="0"]
+[node name="MINOTAURE" type="MeshInstance3D" parent="Minotaur/minorig/Skeleton3D" index="0"]
 mesh = SubResource("ArrayMesh_2s4cj")
 skin = SubResource("Skin_vedgr")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Minotaure3" index="1"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Minotaur" index="1"]
 libraries = {
 &"": SubResource("AnimationLibrary_d6wnb")
 }
 autoplay = "Walk"
 blend_times = [&"swing", &"Walk", 0.3, &"swing", &"swing", 0.3]
 
-[node name="Mount" type="Node3D" parent="Minotaure3" index="2"]
+[node name="Mount" type="Node3D" parent="Minotaur" index="2"]
 transform = Transform3D(4.2867203, -0.6551939, -2.4889007, 1.0179397, 4.8726096, 0.47054058, 2.3638308, -0.9101285, 4.3109, -2.9053798, 1.6135086, 1.9221941)
 
-[node name="Axe" type="CSGCylinder3D" parent="Minotaure3/Mount" index="0"]
+[node name="Axe" type="CSGCylinder3D" parent="Minotaur/Mount" index="0"]
 transform = Transform3D(1, 0, 0, 0, -4.3711392e-08, -1, 0, 1.0000001, -4.371139e-08, 0, 0, -0.84)
 visible = false
 radius = 0.048
 
-[node name="Area3D" type="Area3D" parent="Minotaure3/Mount" index="1"]
+[node name="Area3D" type="Area3D" parent="Minotaur/Mount" index="1"]
 transform = Transform3D(1, 0, 0, -7.450581e-09, -5.9604645e-08, -1, 1.4901161e-08, 1.0000001, -5.9604645e-08, 5.9604645e-08, 2.2351742e-08, -0.8399999)
 collision_mask = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Minotaure3/Mount/Area3D" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Minotaur/Mount/Area3D" index="0"]
 transform = Transform3D(0.9999981, 2.9802322e-08, -1.1920929e-07, 2.3841858e-07, 0.9999995, -2.9802322e-08, 1.9818544e-06, 1.4901161e-07, 0.99999887, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_f7lsa")
 disabled = true
 
-[connection signal="body_entered" from="Minotaure3/Mount/Area3D" to="StateMachine/MinotaurAttack" method="_on_area_3d_body_entered"]
+[connection signal="body_entered" from="Minotaur/Mount/Area3D" to="StateMachine/MinotaurAttack" method="_on_area_3d_body_entered"]

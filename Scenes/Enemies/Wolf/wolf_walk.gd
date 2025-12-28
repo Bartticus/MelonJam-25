@@ -1,7 +1,7 @@
 extends State
 class_name WolfWalk
 
-@export var so: Node
+@export var so: StateObject
 @export var distance_for_attack = 3
 
 func enter():
