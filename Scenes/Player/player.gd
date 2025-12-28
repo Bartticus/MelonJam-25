@@ -14,6 +14,7 @@ var gravity: float = 9.8
 signal mask_changed
 
 @export var restart_screen: CanvasLayer
+@export var in_game_screen: CanvasLayer
 signal player_died
 
 var dead = false
@@ -101,4 +102,5 @@ func die():
 	dead = true
 	visible = false
 	restart_screen.visible = true
+	in_game_screen.visible = false
 	print("Player died")

@@ -1,13 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://bdnyc3xaifmi6"]
+[gd_scene load_steps=7 format=3 uid="uid://bdnyc3xaifmi6"]
 
 [ext_resource type="PackedScene" uid="uid://qrp2qrl5esb7" path="res://Scenes/Enemies/enemy.tscn" id="1_tyws3"]
 [ext_resource type="Script" uid="uid://c3yi675gd5wl0" path="res://Scenes/Enemies/state_object.gd" id="2_aln4i"]
+[ext_resource type="PackedScene" uid="uid://d0rkfhq5pwjgg" path="res://Assets/Models/BetterGoblinzMask.glb" id="2_ppwi1"]
 [ext_resource type="Script" uid="uid://dkymhfy8efj85" path="res://Scenes/Enemies/Wolf/wolf_walk.gd" id="3_se4m8"]
 [ext_resource type="Script" uid="uid://bg1by12crfox6" path="res://Scenes/Enemies/Wolf/wolf_attack.gd" id="4_fij6b"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fij6b"]
 
 [node name="Enemy" instance=ExtResource("1_tyws3")]
+enemy_mask = ExtResource("2_ppwi1")
 
 [node name="StateMachine" parent="." index="2" node_paths=PackedStringArray("initial_state")]
 initial_state = NodePath("WolfWalk")

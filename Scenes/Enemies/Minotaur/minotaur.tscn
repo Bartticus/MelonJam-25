@@ -1,6 +1,7 @@
-[gd_scene load_steps=20 format=4 uid="uid://cwcp6ckkq3arf"]
+[gd_scene load_steps=21 format=4 uid="uid://cwcp6ckkq3arf"]
 
 [ext_resource type="PackedScene" uid="uid://qrp2qrl5esb7" path="res://Scenes/Enemies/enemy.tscn" id="1_pkuws"]
+[ext_resource type="PackedScene" uid="uid://dnqapeundmmhq" path="res://Assets/Models/MinotaureMask3.glb" id="2_377ec"]
 [ext_resource type="Script" uid="uid://c3yi675gd5wl0" path="res://Scenes/Enemies/state_object.gd" id="2_isjdv"]
 [ext_resource type="Script" uid="uid://bakfne7rbociq" path="res://Scenes/Enemies/Minotaur/minotaur_move.gd" id="2_jcmg5"]
 [ext_resource type="Script" uid="uid://ddt47aaa1ejuw" path="res://Scenes/Enemies/Minotaur/minotaur_attack.gd" id="4_f7lsa"]
@@ -588,6 +589,7 @@ radius = 0.55566406
 
 [node name="Enemy" instance=ExtResource("1_pkuws")]
 enemy_type = "Minotaur"
+enemy_mask = ExtResource("2_377ec")
 
 [node name="CSGBox3D" parent="." index="0"]
 visible = false

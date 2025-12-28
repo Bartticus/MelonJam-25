@@ -1,7 +1,8 @@
-[gd_scene load_steps=20 format=4 uid="uid://van5v5g2804j"]
+[gd_scene load_steps=21 format=4 uid="uid://van5v5g2804j"]
 
 [ext_resource type="Script" uid="uid://cxjn8xymotref" path="res://Scenes/Enemies/enemy.gd" id="1_exqna"]
 [ext_resource type="PackedScene" uid="uid://dd71dvq1eho4v" path="res://Scenes/Mask/mask.tscn" id="2_v3txi"]
+[ext_resource type="PackedScene" uid="uid://d0rkfhq5pwjgg" path="res://Assets/Models/BetterGoblinzMask.glb" id="3_xpmg4"]
 [ext_resource type="Script" uid="uid://dsixmcw8uyxke" path="res://addons/finite_state_machine/state_machine.gd" id="3_xpyb8"]
 [ext_resource type="Script" uid="uid://c3yi675gd5wl0" path="res://Scenes/Enemies/state_object.gd" id="4_v3txi"]
 [ext_resource type="Script" uid="uid://cjvheifmiqr8l" path="res://Scenes/Enemies/Goblin/goblin_move.gd" id="5_xpyb8"]
@@ -159,6 +160,33 @@ bind/11/pose = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.099999964, 0)
 bind/12/name = &"Bone.012"
 bind/12/bone = -1
 bind/12/pose = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, -0.099999964, 0)
+
+[sub_resource type="Animation" id="Animation_u8yfu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Area3D/CollisionShape3D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Area3D/CollisionShape3D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.29369092, 0.3718897, -0.39660645)]
+}
 
 [sub_resource type="Animation" id="Animation_st4wm"]
 resource_name = "Walk-loop"
@@ -473,33 +501,6 @@ tracks/21/keys = {
 "values": [Vector3(0.29369092, 0.3718897, -0.39660645), Vector3(0.29369092, 0.3718897, -0.7874365), Vector3(0.29369092, 0.3718897, -0.34868288)]
 }
 
-[sub_resource type="Animation" id="Animation_u8yfu"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../Area3D/CollisionShape3D:disabled")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../Area3D/CollisionShape3D:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0.29369092, 0.3718897, -0.39660645)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xfg1y"]
 _data = {
 &"RESET": SubResource("Animation_u8yfu"),
@@ -517,6 +518,7 @@ collision_mask = 3
 script = ExtResource("1_exqna")
 mask_scene = ExtResource("2_v3txi")
 enemy_type = "Goblin"
+enemy_mask = ExtResource("3_xpmg4")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 visible = false

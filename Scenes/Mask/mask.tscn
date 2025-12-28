@@ -1,7 +1,6 @@
-[gd_scene load_steps=11 format=3 uid="uid://dd71dvq1eho4v"]
+[gd_scene load_steps=10 format=3 uid="uid://dd71dvq1eho4v"]
 
 [ext_resource type="Script" uid="uid://oxjhhj6uhl14" path="res://Scenes/Mask/mask.gd" id="1_q0cms"]
-[ext_resource type="PackedScene" uid="uid://d0rkfhq5pwjgg" path="res://Assets/Models/BetterGoblinzMask.glb" id="3_7uu0t"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_60syn"]
 
@@ -121,9 +120,6 @@ disabled = true
 visible = false
 mesh = SubResource("SphereMesh_vymxh")
 skeleton = NodePath("../..")
-
-[node name="GoblinMask" parent="MeshPivot" instance=ExtResource("3_7uu0t")]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

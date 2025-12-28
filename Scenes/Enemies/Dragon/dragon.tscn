@@ -1,7 +1,8 @@
-[gd_scene load_steps=15 format=4 uid="uid://bigdgogdou3vp"]
+[gd_scene load_steps=16 format=4 uid="uid://bigdgogdou3vp"]
 
 [ext_resource type="PackedScene" uid="uid://qrp2qrl5esb7" path="res://Scenes/Enemies/enemy.tscn" id="1_l12nm"]
 [ext_resource type="Script" uid="uid://c3yi675gd5wl0" path="res://Scenes/Enemies/state_object.gd" id="2_eq8bp"]
+[ext_resource type="PackedScene" uid="uid://jf80o8tkrrcp" path="res://Assets/Models/DragonMask.glb" id="2_ua7uq"]
 [ext_resource type="Script" uid="uid://d3lafbojhaifj" path="res://Scenes/Enemies/Dragon/dragon_move.gd" id="3_ua7uq"]
 [ext_resource type="Script" uid="uid://w6gin5lq6f8g" path="res://Scenes/Enemies/Dragon/dragon_attack.gd" id="4_5jf6k"]
 
@@ -677,6 +678,7 @@ _data = {
 
 [node name="Enemy" instance=ExtResource("1_l12nm")]
 enemy_type = "Dragon"
+enemy_mask = ExtResource("2_ua7uq")
 
 [node name="CSGBox3D" parent="." index="0"]
 visible = false
