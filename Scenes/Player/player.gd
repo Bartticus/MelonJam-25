@@ -6,6 +6,8 @@ var gravity: float = 9.8
 @export var speed: float = 20.0
 @export var accel: float = 2.0
 
+@export var turn_speed: float = 1.0
+
 @export var current_mask: String = "Default"
 signal mask_changed
 
@@ -52,7 +54,14 @@ func player_look_at_cursor() -> void:
 	
 	if not intersection.is_empty():
 		var pos = intersection.position
-		look_at(Vector3(pos.x, 0, pos.z)) #Player looks at ray intersection
+		
+		var old = transform.basis.orthonormalized()
+		look_at(pos)
+		var new = transform.basis.orthonormalized()
+		
+		transform.basis = lerp(old, new, turn_speed) #Player looks at intersection with turn speed
+		
+		#look_at(Vector3(pos.x, 0, pos.z)) #Player looks at ray intersection
 	
 	rotation.x = 0 #Reset the player's rotation to stay vertical
 	rotation.z = 0
