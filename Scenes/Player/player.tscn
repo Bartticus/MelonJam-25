@@ -184,8 +184,12 @@ script = ExtResource("3_mtuoh")
 initial_state = NodePath("PlayerDefault")
 metadata/_custom_type_script = "uid://dsixmcw8uyxke"
 
-[node name="PlayerDefault" type="Node" parent="StateMachine"]
+[node name="PlayerDefault" type="Node" parent="StateMachine" node_paths=PackedStringArray("dragon_mesh", "goblin_mesh", "minotaur_mesh", "wolf_mesh")]
 script = ExtResource("4_htcer")
+dragon_mesh = NodePath("../../DragonMesh")
+goblin_mesh = NodePath("../../GoblinMesh")
+minotaur_mesh = NodePath("../../MinotaurMesh")
+wolf_mesh = NodePath("../../WolfMesh")
 
 [node name="PlayerDragon" type="Node" parent="StateMachine"]
 script = ExtResource("5_htcer")

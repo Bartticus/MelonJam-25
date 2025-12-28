@@ -587,6 +587,7 @@ _data = {
 radius = 0.55566406
 
 [node name="Enemy" instance=ExtResource("1_pkuws")]
+enemy_type = "Minotaur"
 
 [node name="CSGBox3D" parent="." index="0"]
 visible = false

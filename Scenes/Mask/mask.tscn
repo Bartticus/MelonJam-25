@@ -1,13 +1,15 @@
 [gd_scene load_steps=11 format=3 uid="uid://dd71dvq1eho4v"]
 
 [ext_resource type="Script" uid="uid://oxjhhj6uhl14" path="res://Scenes/Mask/mask.gd" id="1_q0cms"]
-[ext_resource type="Texture2D" uid="uid://bdjovkxkbd0jg" path="res://bartticus/texture_03.png" id="1_vymxh"]
 [ext_resource type="PackedScene" uid="uid://d0rkfhq5pwjgg" path="res://Assets/Models/BetterGoblinzMask.glb" id="3_7uu0t"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_60syn"]
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_q0cms"]
+load_path = "res://.godot/imported/texture_03.png-552b8afc0dd456df44395dde2d3c8c68.s3tc.ctex"
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q0cms"]
-albedo_texture = ExtResource("1_vymxh")
+albedo_texture = SubResource("CompressedTexture2D_q0cms")
 
 [sub_resource type="SphereMesh" id="SphereMesh_vymxh"]
 material = SubResource("StandardMaterial3D_q0cms")
