@@ -6,15 +6,26 @@ extends CharacterBody3D
 @export var enemy_mask: PackedScene
 @export var default_mesh: MeshInstance3D
 @export var hit_flash_mesh: MeshInstance3D
+
+@export var health: int = 1
+
 var hitstun_duration: float = 0.1
 
 func _physics_process(_delta: float) -> void:
 	pass
 
 func die() -> void:
-	#death animation
-	default_mesh.hide()
+	health -= 1
 	hit_flash_mesh.show()
+	default_mesh.hide()
+	if health > 0:
+		await get_tree().create_timer(0.1).timeout
+		hit_flash_mesh.hide()
+		default_mesh.show()
+		return
+	#death animation
+	#default_mesh.hide()
+	#hit_flash_mesh.show()
 	
 	#drop mask
 	if randi_range(1,5) == 5 or Global.score == 0: #1 in 5 chance of dropping mask, except the first kill

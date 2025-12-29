@@ -20,12 +20,17 @@ stream_0/stream = ExtResource("6_kas4s")
 script = ExtResource("1_558gm")
 
 [node name="RestartButton" type="Button" parent="."]
-offset_left = 335.0
-offset_top = 301.0
-offset_right = 595.0
-offset_bottom = 397.0
+anchors_preset = -1
+anchor_left = 0.476
+anchor_top = 0.619
+anchor_right = 0.476
+anchor_bottom = 0.619
+offset_left = -130.92004
+offset_top = -47.52002
+offset_right = 129.07996
+offset_bottom = 48.47998
 theme = ExtResource("1_m4fy1")
-theme_override_font_sizes/font_size = 56
+theme_override_font_sizes/font_size = 70
 text = "Restart"
 
 [node name="LoseMusic" type="AudioStreamPlayer" parent="."]
@@ -37,6 +42,20 @@ stream = SubResource("AudioStreamRandomizer_q50df")
 
 [node name="uiHoversfx" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_svfe6")
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.507
+anchor_right = 0.5
+anchor_bottom = 0.507
+offset_left = -308.0
+offset_top = -38.56006
+offset_right = 67.0
+offset_bottom = 39.43994
+theme = ExtResource("1_m4fy1")
+theme_override_font_sizes/font_size = 70
+text = "Your score is: "
 
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="mouse_entered" from="RestartButton" to="." method="_on_button_mouse_entered"]

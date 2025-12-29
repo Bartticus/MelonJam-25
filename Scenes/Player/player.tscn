@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=4 uid="uid://bipe8iju31m6v"]
+[gd_scene load_steps=45 format=4 uid="uid://bipe8iju31m6v"]
 
 [ext_resource type="Script" uid="uid://dyhame4xdaskv" path="res://Scenes/Player/player.gd" id="1_uvnfx"]
 [ext_resource type="Material" uid="uid://cekqgom6kwllj" path="res://Scenes/Enemies/hit_flash.tres" id="2_06tpx"]
@@ -6,13 +6,16 @@
 [ext_resource type="Script" uid="uid://b8kmhxvj0qkoc" path="res://Scenes/Player/masks.gd" id="3_jlvik"]
 [ext_resource type="Script" uid="uid://d4h55johjvho1" path="res://Scenes/Player/Attack/default.gd" id="3_mtuoh"]
 [ext_resource type="Script" uid="uid://bravoqve4r2ie" path="res://Scenes/Player/Attack/dragon.gd" id="3_xpcdj"]
+[ext_resource type="PackedScene" uid="uid://b1dusa5w8j61v" path="res://Assets/Models/DAGGER.glb" id="4_dey5f"]
 [ext_resource type="Script" uid="uid://dv24oqctgo4d7" path="res://Scenes/Player/Attack/goblin.gd" id="5_dd0ac"]
+[ext_resource type="PackedScene" uid="uid://digb84kclgfm5" path="res://Assets/Models/Axe.glb" id="5_r5xpd"]
 [ext_resource type="Script" uid="uid://cjiarbw831ye" path="res://Scenes/Player/Attack/wolf.gd" id="6_0u5uq"]
 [ext_resource type="Script" uid="uid://cbfut85kwf6rb" path="res://Scenes/Player/Attack/minotaur.gd" id="6_jlvik"]
 [ext_resource type="PackedScene" uid="uid://jf80o8tkrrcp" path="res://Assets/Models/DragonMask.glb" id="7_06tpx"]
 [ext_resource type="PackedScene" uid="uid://d0rkfhq5pwjgg" path="res://Assets/Models/BetterGoblinzMask.glb" id="9_7g0yx"]
 [ext_resource type="PackedScene" uid="uid://dnqapeundmmhq" path="res://Assets/Models/MinotaureMask3.glb" id="11_dey5f"]
 [ext_resource type="PackedScene" uid="uid://bx5pitfqjn3v" path="res://Assets/Models/WolfMask.glb" id="13_06tpx"]
+[ext_resource type="AudioStream" uid="uid://ciaran7b4p3o8" path="res://Audio/Punch.wav" id="14_7g0yx"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3vb8q"]
 radius = 0.4086914
@@ -220,6 +223,33 @@ bind/28/name = &"neutral_bone"
 bind/28/bone = -1
 bind/28/pose = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 0, 0)
 
+[sub_resource type="Animation" id="Animation_7g0yx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("bonom:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("bonomHitFlash:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
 [sub_resource type="Animation" id="Animation_06tpx"]
 resource_name = "hit_flash"
 length = 1.5
@@ -249,12 +279,18 @@ tracks/1/keys = {
 "values": [true, false, true, false, true, false]
 }
 
-[sub_resource type="Animation" id="Animation_7g0yx"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7g0yx"]
+_data = {
+&"RESET": SubResource("Animation_7g0yx"),
+&"hit_flash": SubResource("Animation_06tpx")
+}
+
+[sub_resource type="Animation" id="Animation_oikmp"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("bonom:visible")
+tracks/0/path = NodePath("bonomrig/Skeleton3D:show_rest_only")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -262,24 +298,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("bonomHitFlash:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_7g0yx"]
-_data = {
-&"RESET": SubResource("Animation_7g0yx"),
-&"hit_flash": SubResource("Animation_06tpx")
 }
 
 [sub_resource type="Animation" id="Animation_oca32"]
@@ -542,21 +560,6 @@ tracks/35/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
-}
-
-[sub_resource type="Animation" id="Animation_oikmp"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("bonomrig/Skeleton3D:show_rest_only")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_tt4xo"]
@@ -842,7 +845,7 @@ height = 1.0
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_uvnfx"]
 radius = 0.53125
-height = 1.6269531
+height = 1.9223633
 
 [sub_resource type="Animation" id="Animation_a3d8c"]
 length = 0.001
@@ -931,7 +934,7 @@ _data = {
 }
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xpcdj"]
-height = 2.8911133
+height = 4.845
 
 [sub_resource type="Animation" id="Animation_0u5uq"]
 resource_name = "swing"
@@ -1247,19 +1250,21 @@ mesh = SubResource("CapsuleMesh_8h603")
 [node name="WeaponPivot" type="Node3D" parent="."]
 transform = Transform3D(0.52000093, 0, 0, 0, 0.5200149, 0, 0, 0, 0.5200091, 0, -0.35463578, -0.5)
 
-[node name="Dagger" type="Area3D" parent="WeaponPivot"]
+[node name="Dagger" type="Area3D" parent="WeaponPivot" node_paths=PackedStringArray("punch_sound")]
 transform = Transform3D(0.91587055, 0.12586716, -0.38123447, 0.104724675, 0.84180987, 0.529518, 0.38757598, -0.524894, 0.7578073, 0.5568042, 1.3756549, 0.02842158)
 collision_layer = 8
 collision_mask = 4
 script = ExtResource("2_a3d8c")
+punch_sound = NodePath("../../AudioStreamPlayer3D")
 
 [node name="WeaponMesh" type="MeshInstance3D" parent="WeaponPivot/Dagger"]
 transform = Transform3D(1.175, -2.9802322e-08, 1.4901161e-08, 5.9604645e-08, 1.1749997, -5.9604645e-08, -8.940697e-08, 2.3841858e-07, 1.175, -0.02969727, 0.25217986, 0.01191473)
+visible = false
 mesh = SubResource("CapsuleMesh_nwwfe")
 skeleton = NodePath("../../..")
 
 [node name="WeaponCollision" type="CollisionShape3D" parent="WeaponPivot/Dagger"]
-transform = Transform3D(0.9999992, -1.7881393e-07, 5.9604645e-08, 2.8312206e-07, 0.99999964, 4.172325e-07, -8.940697e-08, 5.662441e-07, 0.99999994, 0, 0.13330078, -1.1920929e-07)
+transform = Transform3D(0.9999992, -1.7881393e-07, 5.9604645e-08, 2.8312206e-07, 0.99999964, 4.172325e-07, -8.940697e-08, 5.662441e-07, 0.99999994, -1.1920929e-07, 0.28100562, -5.9604645e-08)
 shape = SubResource("CapsuleShape3D_uvnfx")
 disabled = true
 
@@ -1269,15 +1274,19 @@ libraries = {
 &"": SubResource("AnimationLibrary_xpcdj")
 }
 
-[node name="Axe" type="Area3D" parent="WeaponPivot"]
+[node name="DAGGER" parent="WeaponPivot/Dagger" instance=ExtResource("4_dey5f")]
+transform = Transform3D(0.25427312, -0.16626275, -0.026959978, 0.019499307, -0.019433588, 0.30375504, -0.16730188, -0.25495887, -0.005571857, 0.04497096, -0.104617834, 0.073497176)
+
+[node name="Axe" type="Area3D" parent="WeaponPivot" node_paths=PackedStringArray("punch_sound")]
 visible = false
 collision_layer = 8
 collision_mask = 4
 script = ExtResource("2_a3d8c")
+punch_sound = NodePath("../../AudioStreamPlayer3D")
 metadata/_custom_type_script = "uid://48msrf4ft25n"
 
 [node name="WeaponCollision" type="CollisionShape3D" parent="WeaponPivot/Axe"]
-transform = Transform3D(1, 0, 0, 0, 0.68640286, 0.72722214, 0, -0.72722214, 0.68640286, 0.5360918, 0.7184103, -0.76113325)
+transform = Transform3D(1, 0, 0, 0, 0.6864036, 0.72722334, 0, -0.72722214, 0.68640286, 0.5360918, 0.75088024, -1.445296)
 shape = SubResource("CapsuleShape3D_xpcdj")
 disabled = true
 
@@ -1291,6 +1300,9 @@ libraries = {
 transform = Transform3D(1, 0, 0, 0, -1.769211, -0.5235051, 0, 2.201242, -0.4207583, 0.6305478, 0.8279861, -0.69188374)
 mesh = SubResource("CapsuleMesh_nwwfe")
 skeleton = NodePath("../../..")
+
+[node name="Axe" parent="WeaponPivot/Axe" instance=ExtResource("5_r5xpd")]
+transform = Transform3D(-0.2489449, 0, 0.05523987, 0.0091923205, 0.25144467, 0.041426267, -0.054469664, 0.04243389, -0.2454739, 0.5727368, 1.30477, -1.8253968)
 
 [node name="Masks" type="Node3D" parent="."]
 script = ExtResource("3_jlvik")
@@ -1364,12 +1376,13 @@ wait_time = 0.25
 [node name="AttackTimer" type="Timer" parent="Masks/Wolf"]
 wait_time = 0.5
 
-[node name="Weapon" type="Area3D" parent="Masks/Wolf"]
+[node name="Weapon" type="Area3D" parent="Masks/Wolf" node_paths=PackedStringArray("punch_sound")]
 transform = Transform3D(1, 0, 0, 0, 1, -7.1054274e-15, 0, 7.1054274e-15, 1, 0, -0.4256943, -0.47528487)
 collision_layer = 8
 collision_mask = 4
 monitoring = false
 script = ExtResource("2_a3d8c")
+punch_sound = NodePath("../../../AudioStreamPlayer3D")
 metadata/_custom_type_script = "uid://48msrf4ft25n"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Masks/Wolf/Weapon"]
@@ -1381,6 +1394,9 @@ shape = SubResource("CylinderShape3D_jlvik")
 [node name="InvulnTimer" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("14_7g0yx")
 
 [connection signal="body_entered" from="WeaponPivot/Dagger" to="WeaponPivot/Dagger" method="_on_body_entered"]
 [connection signal="body_entered" from="WeaponPivot/Axe" to="WeaponPivot/Axe" method="_on_body_entered"]

@@ -83,14 +83,6 @@ script = ExtResource("4_xt8pn")
 [node name="RestartScreen" parent="." instance=ExtResource("5_t7yvt")]
 visible = false
 
-[node name="Label" type="Label" parent="RestartScreen"]
-offset_left = 104.0
-offset_top = 192.0
-offset_right = 479.0
-offset_bottom = 269.0
-theme_override_font_sizes/font_size = 56
-text = "Your score is: "
-
 [node name="Colosseum" parent="." instance=ExtResource("5_11not")]
 transform = Transform3D(-8.742278e-08, 0, 2, 0, 2, 0, -2, 0, -8.742278e-08, 0, 0, 0)
 

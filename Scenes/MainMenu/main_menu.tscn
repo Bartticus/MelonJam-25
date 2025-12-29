@@ -1,11 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://b4o23ec1ofw0u"]
+[gd_scene load_steps=12 format=3 uid="uid://b4o23ec1ofw0u"]
 
+[ext_resource type="Theme" uid="uid://fkqkh28hofcv" path="res://main_theme.tres" id="1_2r307"]
 [ext_resource type="Script" uid="uid://uqoft1ixa4u" path="res://Scenes/MainMenu/main_menu.gd" id="1_qgdf6"]
 [ext_resource type="AudioStream" uid="uid://d3vqfkkopahli" path="res://Audio/Title Theme Intro.wav" id="2_0l8wx"]
 [ext_resource type="AudioStream" uid="uid://4phablu7c73i" path="res://Audio/UI Select.wav" id="2_0qgbs"]
 [ext_resource type="Script" uid="uid://da3fqyglvtkvb" path="res://Scenes/MainMenu/theme_music.gd" id="2_adu2g"]
 [ext_resource type="AudioStream" uid="uid://bsoybj41gsvrf" path="res://Audio/UI Hover.wav" id="3_adu2g"]
 [ext_resource type="AudioStream" uid="uid://bv0r0qp0cgpsk" path="res://Audio/Title Theme Loop.wav" id="4_n5jej"]
+[ext_resource type="Texture2D" uid="uid://cufvb8qbybygy" path="res://Assets/Textures/main_menu_image.png" id="7_n5jej"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6upyc"]
 
@@ -26,7 +28,14 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_2r307")
 script = ExtResource("1_qgdf6")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("7_n5jej")
 
 [node name="MenuArt" type="TextureRect" parent="."]
 layout_mode = 1
@@ -43,9 +52,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -227.5
-offset_top = -300.0
-offset_right = 227.5
+offset_left = -227.0
+offset_top = -449.0
+offset_right = 228.0
+offset_bottom = -71.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxEmpty_6upyc")
@@ -58,16 +68,19 @@ alignment = 1
 [node name="Play" type="Button" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
 focus_mode = 0
+theme_override_font_sizes/font_size = 70
 text = "Play"
 
 [node name="Credits" type="Button" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
 focus_mode = 0
+theme_override_font_sizes/font_size = 70
 text = "Credits"
 
 [node name="Quit" type="Button" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
 focus_mode = 0
+theme_override_font_sizes/font_size = 70
 text = "Quit"
 
 [node name="Credits" type="TextureRect" parent="."]

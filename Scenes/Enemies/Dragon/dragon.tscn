@@ -689,6 +689,7 @@ enemy_type = "Dragon"
 enemy_mask = ExtResource("2_ua7uq")
 default_mesh = NodePath("Dragon/Dinobones/Skeleton3D/dinosor")
 hit_flash_mesh = NodePath("Dragon/Dinobones/Skeleton3D/dinosorHitFlash")
+health = 2
 
 [node name="CSGBox3D" parent="." index="0"]
 visible = false

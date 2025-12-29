@@ -597,6 +597,7 @@ enemy_type = "Minotaur"
 enemy_mask = ExtResource("2_377ec")
 default_mesh = NodePath("Minotaur/minorig/Skeleton3D/MINOTAURE")
 hit_flash_mesh = NodePath("Minotaur/minorig/Skeleton3D/MINOTAUREHitFlash")
+health = 2
 
 [node name="CSGBox3D" parent="." index="0"]
 visible = false
