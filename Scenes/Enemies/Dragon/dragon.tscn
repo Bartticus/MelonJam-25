@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://bigdgogdou3vp"]
+[gd_scene load_steps=20 format=4 uid="uid://bigdgogdou3vp"]
 
 [ext_resource type="PackedScene" uid="uid://qrp2qrl5esb7" path="res://Scenes/Enemies/enemy.tscn" id="1_l12nm"]
 [ext_resource type="Script" uid="uid://c3yi675gd5wl0" path="res://Scenes/Enemies/state_object.gd" id="2_eq8bp"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://d3lafbojhaifj" path="res://Scenes/Enemies/Dragon/dragon_move.gd" id="3_ua7uq"]
 [ext_resource type="Script" uid="uid://w6gin5lq6f8g" path="res://Scenes/Enemies/Dragon/dragon_attack.gd" id="4_5jf6k"]
 [ext_resource type="Material" uid="uid://cekqgom6kwllj" path="res://Scenes/Enemies/hit_flash.tres" id="6_ua7uq"]
+[ext_resource type="AudioStream" uid="uid://cq7gxw70yr5rw" path="res://Audio/FireLoop.wav" id="7_5jf6k"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_eq8bp"]
 size = Vector3(2.3505268, 2.5059814, 2.1368904)
@@ -719,11 +720,12 @@ so = NodePath("../StateObject")
 distance_for_attack = 20
 metadata/_custom_type_script = "uid://d3lafbojhaifj"
 
-[node name="DragonAttack" type="Node" parent="StateMachine" index="2" node_paths=PackedStringArray("so", "spawnpoint")]
+[node name="DragonAttack" type="Node" parent="StateMachine" index="2" node_paths=PackedStringArray("so", "spawnpoint", "fire_sound")]
 script = ExtResource("4_5jf6k")
 so = NodePath("../StateObject")
 distance_for_walk = 20.0
 spawnpoint = NodePath("../../Spawnpoint")
+fire_sound = NodePath("../../AudioStreamPlayer3D")
 metadata/_custom_type_script = "uid://w6gin5lq6f8g"
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="." index="5"]
@@ -928,3 +930,8 @@ libraries = {
 &"": SubResource("AnimationLibrary_2mgy0")
 }
 autoplay = "Walk "
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." index="8"]
+stream = ExtResource("7_5jf6k")
+volume_db = -5.0
+max_distance = 40.0
