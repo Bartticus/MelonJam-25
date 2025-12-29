@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://d3lafbojhaifj" path="res://Scenes/Enemies/Dragon/dragon_move.gd" id="3_ua7uq"]
 [ext_resource type="Script" uid="uid://w6gin5lq6f8g" path="res://Scenes/Enemies/Dragon/dragon_attack.gd" id="4_5jf6k"]
 [ext_resource type="Material" uid="uid://cekqgom6kwllj" path="res://Scenes/Enemies/hit_flash.tres" id="6_ua7uq"]
-[ext_resource type="AudioStream" uid="uid://cq7gxw70yr5rw" path="res://Audio/FireLoop.wav" id="7_5jf6k"]
+[ext_resource type="AudioStream" uid="uid://bj82mqvx0jxvo" path="res://Audio/fireballfinal.mp3" id="7_5jf6k"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_eq8bp"]
 size = Vector3(2.3505268, 2.5059814, 2.1368904)
@@ -933,5 +933,4 @@ autoplay = "Walk "
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." index="8"]
 stream = ExtResource("7_5jf6k")
-volume_db = -5.0
-max_distance = 40.0
+max_distance = 100.0

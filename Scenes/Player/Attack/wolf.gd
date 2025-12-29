@@ -4,7 +4,7 @@ extends AttackSetup
 @onready var timer = $Timer
 @onready var attack_timer = $AttackTimer
 @onready var area = $Weapon
-
+@onready var dash_sound = $AudioStreamPlayer3D
 
 var dash_speed = 30
 var can_attack = true
@@ -25,6 +25,7 @@ func attack():
 		area.monitoring = true
 		timer.start()
 		player.collision_layer = 0b00 #Disable physics layer so he will not die
+		dash_sound.play()
 
 func _physics_process(_delta: float) -> void:
 	if not player.can_move:

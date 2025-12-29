@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://qrp2qrl5esb7"]
+[gd_scene load_steps=6 format=3 uid="uid://qrp2qrl5esb7"]
 
 [ext_resource type="Script" uid="uid://cxjn8xymotref" path="res://Scenes/Enemies/enemy.gd" id="1_dmwl5"]
 [ext_resource type="PackedScene" uid="uid://dd71dvq1eho4v" path="res://Scenes/Mask/mask.tscn" id="2_d40jh"]
 [ext_resource type="Script" uid="uid://dsixmcw8uyxke" path="res://addons/finite_state_machine/state_machine.gd" id="3_gx76c"]
+[ext_resource type="AudioStream" uid="uid://cu8nhl4gfk4xt" path="res://Audio/Retro Roar 02.wav" id="3_ubio8"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mgaaf"]
 
@@ -12,6 +13,7 @@ collision_mask = 3
 script = ExtResource("1_dmwl5")
 mask_scene = ExtResource("2_d40jh")
 enemy_type = "Wolf"
+death_sound = ExtResource("3_ubio8")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 

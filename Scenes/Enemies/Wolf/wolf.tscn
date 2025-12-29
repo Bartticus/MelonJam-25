@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://bdnyc3xaifmi6"]
+[gd_scene load_steps=19 format=4 uid="uid://bdnyc3xaifmi6"]
 
 [ext_resource type="PackedScene" uid="uid://qrp2qrl5esb7" path="res://Scenes/Enemies/enemy.tscn" id="1_tyws3"]
 [ext_resource type="Script" uid="uid://c3yi675gd5wl0" path="res://Scenes/Enemies/state_object.gd" id="2_aln4i"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://dkymhfy8efj85" path="res://Scenes/Enemies/Wolf/wolf_walk.gd" id="3_se4m8"]
 [ext_resource type="Script" uid="uid://bg1by12crfox6" path="res://Scenes/Enemies/Wolf/wolf_attack.gd" id="4_fij6b"]
 [ext_resource type="Material" uid="uid://cekqgom6kwllj" path="res://Scenes/Enemies/hit_flash.tres" id="6_n0nux"]
+[ext_resource type="AudioStream" uid="uid://dwbywag3wl5bu" path="res://Audio/521999__kastenfrosch__whoosh-dash.wav" id="7_366yt"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ppwi1"]
 size = Vector3(1, 2.581543, 2.559082)
@@ -750,12 +751,13 @@ so = NodePath("../StateObject")
 distance_for_attack = 8
 metadata/_custom_type_script = "uid://dkymhfy8efj85"
 
-[node name="WolfAttack" type="Node" parent="StateMachine" index="2" node_paths=PackedStringArray("so", "area", "anim_player_2")]
+[node name="WolfAttack" type="Node" parent="StateMachine" index="2" node_paths=PackedStringArray("so", "area", "anim_player_2", "dash_sound")]
 script = ExtResource("4_fij6b")
 so = NodePath("../StateObject")
 attack_distance = 8.0
 area = NodePath("../../Area3D")
 anim_player_2 = NodePath("../../Wolf2/AnimationPlayer2")
+dash_sound = NodePath("../../AudioStreamPlayer3D")
 metadata/_custom_type_script = "uid://bg1by12crfox6"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="4"]
@@ -1018,5 +1020,9 @@ libraries = {
 }
 autoplay = "Walk"
 blend_times = [&"Bite", &"Walk", 0.1, &"Walk", &"Bite", 0.1]
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." index="7"]
+stream = ExtResource("7_366yt")
+max_distance = 40.0
 
 [connection signal="body_entered" from="Area3D" to="StateMachine/WolfAttack" method="_on_area_3d_body_entered"]

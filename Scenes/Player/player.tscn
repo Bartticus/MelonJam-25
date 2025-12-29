@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=4 uid="uid://bipe8iju31m6v"]
+[gd_scene load_steps=46 format=4 uid="uid://bipe8iju31m6v"]
 
 [ext_resource type="Script" uid="uid://dyhame4xdaskv" path="res://Scenes/Player/player.gd" id="1_uvnfx"]
 [ext_resource type="Material" uid="uid://cekqgom6kwllj" path="res://Scenes/Enemies/hit_flash.tres" id="2_06tpx"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://dnqapeundmmhq" path="res://Assets/Models/MinotaureMask3.glb" id="11_dey5f"]
 [ext_resource type="PackedScene" uid="uid://bx5pitfqjn3v" path="res://Assets/Models/WolfMask.glb" id="13_06tpx"]
 [ext_resource type="AudioStream" uid="uid://ciaran7b4p3o8" path="res://Audio/Punch.wav" id="14_7g0yx"]
+[ext_resource type="AudioStream" uid="uid://dwbywag3wl5bu" path="res://Audio/521999__kastenfrosch__whoosh-dash.wav" id="16_ks1b7"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3vb8q"]
 radius = 0.4086914
@@ -1389,6 +1390,9 @@ metadata/_custom_type_script = "uid://48msrf4ft25n"
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
 shape = SubResource("CylinderShape3D_jlvik")
 
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Masks/Wolf"]
+stream = ExtResource("16_ks1b7")
+
 [node name="FireballSpawnpoint" type="Node3D" parent="."]
 
 [node name="InvulnTimer" type="Timer" parent="."]
@@ -1397,6 +1401,8 @@ one_shot = true
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("14_7g0yx")
+
+[node name="AudioListener3D" type="AudioListener3D" parent="."]
 
 [connection signal="body_entered" from="WeaponPivot/Dagger" to="WeaponPivot/Dagger" method="_on_body_entered"]
 [connection signal="body_entered" from="WeaponPivot/Axe" to="WeaponPivot/Axe" method="_on_body_entered"]

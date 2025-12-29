@@ -27,7 +27,8 @@ func process(delta: float):
 		transitioned.emit(self, "DragonMove")
 
 func _attack():
-	fire_sound.play()
+	if randi_range(1,3)==3:
+		fire_sound.play()
 	var temp = FIREBALL.instantiate()
 	temp.position = spawnpoint.global_position
 	temp.rotation.y = so.enemy.rotation.y + randf_range(-1, 1) * deg_to_rad(angle)

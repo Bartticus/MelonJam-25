@@ -6,6 +6,7 @@ extends CharacterBody3D
 @export var enemy_mask: PackedScene
 @export var default_mesh: MeshInstance3D
 @export var hit_flash_mesh: MeshInstance3D
+@export var death_sound: AudioStream
 
 @export var health: int = 1
 
@@ -46,5 +47,11 @@ func die() -> void:
 	get_tree().paused = false
 	
 	Global.score += 1
+	
+	var temp = AudioStreamPlayer.new()
+	temp.stream = death_sound
+	temp.finished.connect(temp.queue_free)
+	add_sibling(temp)
+	temp.play()
 	
 	queue_free()

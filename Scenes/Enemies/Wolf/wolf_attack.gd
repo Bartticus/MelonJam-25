@@ -8,6 +8,7 @@ const WOLF_ANIM_LIBRARY = preload("uid://2kmeaaeet3n0")
 var anim_library
 var anim : Animation
 @export var anim_player_2: AnimationPlayer
+@export var dash_sound: AudioStreamPlayer3D
 
 func _ready() -> void:
 	anim_library = WOLF_ANIM_LIBRARY.duplicate_deep()
@@ -16,6 +17,8 @@ func _ready() -> void:
 	
 
 func enter():
+	dash_sound.play()
+	
 	area.monitoring = true
 	anim.track_set_key_value(0, 0, so.enemy.position)
 	anim.track_set_key_value(0, 1, so.enemy.position)
