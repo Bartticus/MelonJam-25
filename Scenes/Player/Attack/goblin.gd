@@ -9,7 +9,7 @@ func setup():
 	masks_node.setup("default")
 	
 	player.turn_speed = 1
-	player.speed = 40
+	player.speed = 30
 	player.accel = 10
 
 func attack():

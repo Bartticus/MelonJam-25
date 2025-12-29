@@ -810,11 +810,16 @@ radius = 0.048
 
 [node name="Area3D" type="Area3D" parent="Minotaur/Mount" index="1"]
 transform = Transform3D(1, 0, 0, -7.450581e-09, -5.9604645e-08, -1, 1.4901161e-08, 1.0000001, -5.9604645e-08, 5.9604645e-08, 2.2351742e-08, -0.8399999)
+collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Minotaur/Mount/Area3D" index="0"]
 transform = Transform3D(0.9999981, 2.9802322e-08, -1.1920929e-07, 2.3841858e-07, 0.9999995, -2.9802322e-08, 1.9818544e-06, 1.4901161e-07, 0.99999887, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_f7lsa")
 disabled = true
+
+[node name="InvulnTimer" type="Timer" parent="." index="6"]
+wait_time = 0.5
+one_shot = true
 
 [connection signal="body_entered" from="Minotaur/Mount/Area3D" to="StateMachine/MinotaurAttack" method="_on_area_3d_body_entered"]

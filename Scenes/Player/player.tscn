@@ -853,14 +853,14 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("WeaponPivot:position")
+tracks/0/path = NodePath("WeaponPivot/Dagger/WeaponCollision:disabled")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, -0.35463578, -0.5)]
+"update": 1,
+"values": [true]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -872,19 +872,19 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, 0, 0)]
+"values": [Vector3(0.4255252, -1.2801332, 0.76387423)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("WeaponPivot/Dagger/WeaponCollision:disabled")
+tracks/2/path = NodePath("WeaponPivot:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"update": 0,
+"values": [Vector3(0.97781, -0.5231926, -0.104206264)]
 }
 
 [sub_resource type="Animation" id="Animation_uvnfx"]
@@ -935,12 +935,12 @@ _data = {
 }
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xpcdj"]
+radius = 1.3398438
 height = 4.845
 
 [sub_resource type="Animation" id="Animation_0u5uq"]
 resource_name = "swing"
-length = 0.5
-step = 0.1
+step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -948,10 +948,10 @@ tracks/0/path = NodePath("WeaponPivot:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.3, 0.5),
-"transitions": PackedFloat32Array(1, 0.51763237, 1.8025012, 1),
+"times": PackedFloat32Array(0, 0.35, 0.4, 0.45, 0.6, 1),
+"transitions": PackedFloat32Array(0.25881627, 1, 1, 1, 2.6390157, 1),
 "update": 0,
-"values": [Vector3(0, -0.29293418, -0.3294319), Vector3(0, -0.06811714, -0.86841893), Vector3(-0.43148056, -0.06811714, -1.185008), Vector3(0, -0.29293418, -0.3294319)]
+"values": [Vector3(0.97781, 0.91694695, -0.4812624), Vector3(0.97781, 0.91694695, -0.028963983), Vector3(0.97781, 0.91694695, -0.734291), Vector3(-0.0758065, 0.91694695, -1.0266616), Vector3(-0.8721719, 0.91694695, -0.016803503), Vector3(0.97781, 0.91694695, -0.4812624)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -960,10 +960,10 @@ tracks/1/path = NodePath("WeaponPivot:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.3, 0.5),
-"transitions": PackedFloat32Array(1, 0.51763237, 1.8025012, 1),
+"times": PackedFloat32Array(0, 0.35, 0.4, 0.45, 0.6, 1),
+"transitions": PackedFloat32Array(0.25881627, 1, 1, 1, 2.6390157, 1),
 "update": 0,
-"values": [Vector3(-0.27836257, 0, 0), Vector3(-0.021610448, 0.43555322, 0.123293094), Vector3(-0.38565153, 0.906619, -0.30159128), Vector3(-0.27836257, 0, 0)]
+"values": [Vector3(0.2511696, -2.01979, -0.95776534), Vector3(0.25116968, -2.5630238, -0.95776534), Vector3(0.1719691, 0.059920274, -1.2462054), Vector3(0.17196918, 0.537774, -1.2462054), Vector3(0.17196926, 1.8055115, -1.2462054), Vector3(0.2511696, -2.01979, -0.95776534)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -972,7 +972,7 @@ tracks/2/path = NodePath("WeaponPivot/Axe/WeaponCollision:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.5),
+"times": PackedFloat32Array(0, 0.2, 1),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [true, false, true]
@@ -1249,7 +1249,7 @@ visible = false
 mesh = SubResource("CapsuleMesh_8h603")
 
 [node name="WeaponPivot" type="Node3D" parent="."]
-transform = Transform3D(0.52000093, 0, 0, 0, 0.5200149, 0, 0, 0, 0.5200091, 0, -0.35463578, -0.5)
+transform = Transform3D(-0.034633834, -0.25160554, -0.45376867, 0.3276203, 0.34204534, -0.21465933, 0.4023263, -0.30019188, 0.1357381, 0.97781, -0.5231926, -0.104206264)
 
 [node name="Dagger" type="Area3D" parent="WeaponPivot" node_paths=PackedStringArray("punch_sound")]
 transform = Transform3D(0.91587055, 0.12586716, -0.38123447, 0.104724675, 0.84180987, 0.529518, 0.38757598, -0.524894, 0.7578073, 0.5568042, 1.3756549, 0.02842158)
@@ -1287,7 +1287,7 @@ punch_sound = NodePath("../../AudioStreamPlayer3D")
 metadata/_custom_type_script = "uid://48msrf4ft25n"
 
 [node name="WeaponCollision" type="CollisionShape3D" parent="WeaponPivot/Axe"]
-transform = Transform3D(1, 0, 0, 0, 0.6864036, 0.72722334, 0, -0.72722214, 0.68640286, 0.5360918, 0.75088024, -1.445296)
+transform = Transform3D(0.78915715, 0.23239882, 0.56852657, -0.61418986, 0.30036446, 0.7297616, -0.001169255, -0.92508054, 0.3797717, 0.7490047, 0.83965164, -0.9956634)
 shape = SubResource("CapsuleShape3D_xpcdj")
 disabled = true
 
