@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b4o23ec1ofw0u"]
+[gd_scene load_steps=14 format=3 uid="uid://b4o23ec1ofw0u"]
 
 [ext_resource type="Theme" uid="uid://fkqkh28hofcv" path="res://main_theme.tres" id="1_2r307"]
 [ext_resource type="Script" uid="uid://uqoft1ixa4u" path="res://Scenes/MainMenu/main_menu.gd" id="1_qgdf6"]
@@ -7,7 +7,9 @@
 [ext_resource type="Script" uid="uid://da3fqyglvtkvb" path="res://Scenes/MainMenu/theme_music.gd" id="2_adu2g"]
 [ext_resource type="AudioStream" uid="uid://bsoybj41gsvrf" path="res://Audio/UI Hover.wav" id="3_adu2g"]
 [ext_resource type="AudioStream" uid="uid://bv0r0qp0cgpsk" path="res://Audio/Title Theme Loop.wav" id="4_n5jej"]
+[ext_resource type="Script" uid="uid://mqrfwjnnrrmg" path="res://Scenes/MainMenu/h_slider.gd" id="5_agesy"]
 [ext_resource type="Texture2D" uid="uid://cufvb8qbybygy" path="res://Assets/Textures/main_menu_image.png" id="7_n5jej"]
+[ext_resource type="Texture2D" uid="uid://c8ltbb8jftsl3" path="res://Assets/image.png" id="9_omq0y"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6upyc"]
 
@@ -45,6 +47,81 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="Image" type="Sprite2D" parent="."]
+position = Vector2(954, 447)
+scale = Vector2(0.6462963, 0.6462963)
+texture = ExtResource("9_omq0y")
+
+[node name="VolumeSliders" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="VolumeSliders"]
+layout_mode = 0
+offset_left = 1378.0
+offset_top = 844.0
+offset_right = 1492.0
+offset_bottom = 878.0
+theme_override_font_sizes/font_size = 30
+text = "Master Volume"
+
+[node name="HSlider" type="HSlider" parent="VolumeSliders"]
+layout_mode = 0
+offset_left = 1300.0
+offset_top = 882.0
+offset_right = 1572.0
+offset_bottom = 898.0
+max_value = 2.0
+step = 0.1
+value = 2.0
+script = ExtResource("5_agesy")
+bus_name = "Master"
+
+[node name="Label2" type="Label" parent="VolumeSliders"]
+layout_mode = 0
+offset_left = 1378.0
+offset_top = 904.0
+offset_right = 1492.0
+offset_bottom = 938.0
+theme_override_font_sizes/font_size = 30
+text = "Music Volume"
+horizontal_alignment = 1
+
+[node name="HSlider2" type="HSlider" parent="VolumeSliders"]
+layout_mode = 0
+offset_left = 1300.0
+offset_top = 942.0
+offset_right = 1572.0
+offset_bottom = 958.0
+max_value = 2.0
+step = 0.1
+value = 2.0
+script = ExtResource("5_agesy")
+bus_name = "Music"
+
+[node name="Label3" type="Label" parent="VolumeSliders"]
+layout_mode = 0
+offset_left = 1378.0
+offset_top = 964.0
+offset_right = 1492.0
+offset_bottom = 998.0
+theme_override_font_sizes/font_size = 30
+text = "SFX Volume"
+horizontal_alignment = 1
+
+[node name="HSlider3" type="HSlider" parent="VolumeSliders"]
+layout_mode = 0
+offset_left = 1300.0
+offset_top = 1002.0
+offset_right = 1572.0
+offset_bottom = 1018.0
+max_value = 2.0
+step = 0.1
+value = 2.0
+script = ExtResource("5_agesy")
+bus_name = "SFX"
+
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 1
 anchors_preset = 7
@@ -52,17 +129,16 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -227.0
-offset_top = -449.0
-offset_right = 228.0
-offset_bottom = -71.0
+offset_left = -227.5
+offset_top = -378.0
+offset_right = 227.5
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxEmpty_6upyc")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
 layout_mode = 2
-theme_override_constants/separation = 60
+theme_override_constants/separation = 30
 alignment = 1
 
 [node name="Play" type="Button" parent="PanelContainer/VBoxContainer"]
@@ -85,16 +161,47 @@ text = "Quit"
 
 [node name="Credits" type="TextureRect" parent="."]
 visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Credits"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.1882353, 0.35686275, 0.35686275, 1)
+
+[node name="Label" type="Label" parent="Credits/ColorRect"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 703.0
+offset_top = 312.0
+offset_right = 1304.0
+offset_bottom = 673.0
+theme_override_font_sizes/font_size = 80
+text = "Bartticus - Programmer
+Medieval Vixen - Programmer
+Picoto - 3D artist
+Crogoze - Soundtrack"
+
+[node name="TextureRect" type="TextureRect" parent="Credits"]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("7_n5jej")
 
 [node name="Return" type="Button" parent="Credits"]
 layout_mode = 0
 offset_left = 16.0
 offset_top = 446.0
 offset_right = 320.0
-offset_bottom = 517.0
+offset_bottom = 520.0
+theme_override_font_sizes/font_size = 60
 text = "Return"
 
 [node name="ThemeMusic" type="AudioStreamPlayer" parent="."]

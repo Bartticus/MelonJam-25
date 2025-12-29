@@ -36,14 +36,18 @@ text = "Restart"
 [node name="LoseMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_vl6m8")
 volume_db = -8.0
+bus = &"Music"
 
 [node name="uisfx" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_q50df")
+bus = &"SFX"
 
 [node name="uiHoversfx" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_svfe6")
+bus = &"SFX"
 
 [node name="Label" type="Label" parent="."]
+visible = false
 anchors_preset = -1
 anchor_left = 0.5
 anchor_top = 0.507

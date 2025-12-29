@@ -1,7 +1,7 @@
 extends Node
 
 @export var curve: Curve
-var number_of_enemy = 5
+var number_of_enemy = 1
 
 @export var timer: Timer
 
