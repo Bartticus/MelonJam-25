@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://bdnyc3xaifmi6"]
+[gd_scene load_steps=20 format=4 uid="uid://bdnyc3xaifmi6"]
 
 [ext_resource type="PackedScene" uid="uid://qrp2qrl5esb7" path="res://Scenes/Enemies/enemy.tscn" id="1_tyws3"]
 [ext_resource type="Script" uid="uid://c3yi675gd5wl0" path="res://Scenes/Enemies/state_object.gd" id="2_aln4i"]
@@ -721,6 +721,11 @@ _data = {
 &"Walk": SubResource("Animation_kv58p")
 }
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_366yt"]
+random_pitch = 2.4
+streams_count = 1
+stream_0/stream = ExtResource("7_366yt")
+
 [node name="Wolf" node_paths=PackedStringArray("default_mesh", "hit_flash_mesh") instance=ExtResource("1_tyws3")]
 collision_mask = 1
 enemy_mask = ExtResource("2_ppwi1")
@@ -1022,7 +1027,7 @@ autoplay = "Walk"
 blend_times = [&"Bite", &"Walk", 0.1, &"Walk", &"Bite", 0.1]
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." index="7"]
-stream = ExtResource("7_366yt")
+stream = SubResource("AudioStreamRandomizer_366yt")
 max_distance = 40.0
 
 [connection signal="body_entered" from="Area3D" to="StateMachine/WolfAttack" method="_on_area_3d_body_entered"]
