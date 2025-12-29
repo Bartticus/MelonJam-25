@@ -23,6 +23,7 @@ func die() -> void:
 	hit_flash_mesh.show()
 	default_mesh.hide()
 	
+	
 	#camera shake
 	var camera: MainCamera = get_viewport().get_camera_3d()
 	camera.screen_shake(1,2)
@@ -56,6 +57,7 @@ func die() -> void:
 	
 	var temp = AudioStreamPlayer.new()
 	temp.stream = death_sound
+	temp.bus = "SFX"
 	temp.finished.connect(temp.queue_free)
 	add_sibling(temp)
 	temp.play()

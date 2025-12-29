@@ -101,14 +101,17 @@ text = "Return"
 stream = ExtResource("2_0l8wx")
 volume_db = -12.0
 autoplay = true
+bus = &"Music"
 script = ExtResource("2_adu2g")
 next_song = ExtResource("4_n5jej")
 
 [node name="uisfx" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_sho4w")
+bus = &"SFX"
 
 [node name="uiHoversfx" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_fxueo")
+bus = &"SFX"
 
 [connection signal="mouse_entered" from="PanelContainer/VBoxContainer/Play" to="." method="_on_play_mouse_entered"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]

@@ -1392,6 +1392,7 @@ shape = SubResource("CylinderShape3D_jlvik")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Masks/Wolf"]
 stream = ExtResource("16_ks1b7")
+bus = &"SFX"
 
 [node name="FireballSpawnpoint" type="Node3D" parent="."]
 
@@ -1401,6 +1402,7 @@ one_shot = true
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("14_7g0yx")
+bus = &"SFX"
 
 [node name="AudioListener3D" type="AudioListener3D" parent="."]
 

@@ -91,6 +91,7 @@ process_mode = 3
 stream = ExtResource("6_0ibrr")
 volume_db = -10.0
 autoplay = true
+bus = &"Music"
 script = ExtResource("7_qnyor")
 next_song = ExtResource("8_vgwd8")
 
