@@ -21,8 +21,12 @@ func attack():
 		var temp = FIREBALL.instantiate()
 		temp.position = spawnpoint.global_position
 		temp.rotation.y = player.rotation.y
-		var material: CSGSphere3D = temp.get_node("CSGSphere3D")
-		material.material.albedo_color = Color.YELLOW
+		
+		var sphere: CSGSphere3D = temp.get_node("CSGSphere3D")
+		sphere.material.albedo_color = Color.YELLOW
+		var light: OmniLight3D = temp.get_node("OmniLight3D")
+		light.light_color = Color.YELLOW
+		
 		get_tree().current_scene.get_node("Fireballs").add_child(temp)
 		can_shoot = false
 		timer.start()

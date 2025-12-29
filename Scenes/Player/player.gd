@@ -3,6 +3,7 @@ extends CharacterBody3D
 
 @export var anim_player: AnimationPlayer
 @export var weapon_anim_plr: AnimationPlayer
+@export var flash_anim_plr: AnimationPlayer
 
 var movement_vector := Vector3.ZERO
 var gravity: float = 9.8
@@ -11,6 +12,7 @@ var gravity: float = 9.8
 @export var turn_speed: float = 1.0
 @export var player_scale: float = 2.0
 
+@onready var current_mask_mesh = $Masks/Default
 @export var current_mask: String = "Default"
 signal mask_changed
 
@@ -21,7 +23,10 @@ signal player_died
 var dead = false
 var can_move = true
 
-@onready var current_mask_mesh = $Masks/Default
+@export var default_mesh: MeshInstance3D
+@export var hit_flash_mesh: MeshInstance3D
+var hitstun_duration: float = 0.2
+@onready var invuln_timer: Timer = $InvulnTimer
 
 func _ready() -> void:
 	Global.player = self
@@ -88,6 +93,8 @@ func equip_mask(mask_type: String) -> void:
 	current_mask_mesh.hide()
 	
 	match mask_type:
+		"Default":
+			current_mask_mesh = $Masks/Default
 		"Dragon":
 			current_mask_mesh = $Masks/Dragon
 		"Goblin":
@@ -105,6 +112,11 @@ func _input(event: InputEvent) -> void:
 		current_mask_mesh.attack()
 
 func die():
+	if not invuln_timer.is_stopped(): return #Don't get hit immediately after getting hit
+	if current_mask != "Default": #If wearing a mask, don't die
+		drop_mask()
+		return
+	
 	player_died.emit()
 	
 	#camera shake
@@ -117,3 +129,18 @@ func die():
 	restart_screen.visible = true
 	in_game_screen.visible = false
 	print("Player died")
+
+func drop_mask() -> void:
+	equip_mask("Default")
+	
+	invuln_timer.start()
+	flash_anim_plr.play("hit_flash")
+	
+	#camera shake
+	var camera: MainCamera = get_viewport().get_camera_3d()
+	camera.screen_shake(2,4)
+	
+	#hitstun
+	get_tree().paused = true
+	await get_tree().create_timer(hitstun_duration).timeout
+	get_tree().paused = false
