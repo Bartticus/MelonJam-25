@@ -78,6 +78,10 @@ pick_up={
 3d_physics/layer_4="Weapon"
 3d_physics/layer_5="Pickup"
 
+[physics]
+
+common/physics_interpolation=true
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"

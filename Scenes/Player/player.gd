@@ -124,6 +124,7 @@ func die():
 	camera.screen_shake(5,10)
 	
 	collision_layer = 0
+	collision_mask = 0
 	dead = true
 	visible = false
 	restart_screen.visible = true

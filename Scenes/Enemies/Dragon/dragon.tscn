@@ -934,3 +934,7 @@ autoplay = "Walk "
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." index="8"]
 stream = ExtResource("7_5jf6k")
 max_distance = 100.0
+
+[node name="InvulnTimer" type="Timer" parent="." index="9"]
+wait_time = 0.5
+one_shot = true
