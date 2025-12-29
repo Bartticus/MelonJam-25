@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://cxjn8xymotref" path="res://Scenes/Enemies/enemy.gd" id="1_dmwl5"]
 [ext_resource type="PackedScene" uid="uid://dd71dvq1eho4v" path="res://Scenes/Mask/mask.tscn" id="2_d40jh"]
 [ext_resource type="Script" uid="uid://dsixmcw8uyxke" path="res://addons/finite_state_machine/state_machine.gd" id="3_gx76c"]
-[ext_resource type="AudioStream" uid="uid://cu8nhl4gfk4xt" path="res://Audio/Retro Roar 02.wav" id="3_ubio8"]
+[ext_resource type="AudioStream" uid="uid://orh4b7a465nl" path="res://Audio/Enemy Death.wav" id="3_ubio8"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mgaaf"]
 

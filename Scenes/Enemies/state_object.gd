@@ -16,6 +16,7 @@ func look_at_player() -> void:
 	#enemy.look_at(point)
 	
 	var old = enemy.transform.basis.orthonormalized()
+	
 	enemy.look_at(point)
 	var new = enemy.transform.basis.orthonormalized()
 	enemy.transform.basis = lerp(old, new, turn_speed)
