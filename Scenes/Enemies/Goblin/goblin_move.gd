@@ -22,6 +22,7 @@ func physics_process(delta: float):
 	if so.distance_player_enemy() < follow_player_radius:
 		var direction = so.enemy.position.direction_to(Global.player.position)
 		so.enemy.velocity = direction * so.speed * delta
+		so.enemy.velocity.y = 0
 		so.look_at_player()
 	else:
 		find_walking_target(delta)

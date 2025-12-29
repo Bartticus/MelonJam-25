@@ -1,10 +1,13 @@
-[gd_scene load_steps=21 format=4 uid="uid://cwcp6ckkq3arf"]
+[gd_scene load_steps=22 format=4 uid="uid://cwcp6ckkq3arf"]
 
 [ext_resource type="PackedScene" uid="uid://qrp2qrl5esb7" path="res://Scenes/Enemies/enemy.tscn" id="1_pkuws"]
-[ext_resource type="PackedScene" uid="uid://dnqapeundmmhq" path="res://Assets/Models/MinotaureMask3.glb" id="2_377ec"]
+[ext_resource type="PackedScene" uid="uid://smt3bwtni5xq" path="res://Scenes/Enemies/Minotaur/minotaur_mask.tscn" id="2_377ec"]
 [ext_resource type="Script" uid="uid://c3yi675gd5wl0" path="res://Scenes/Enemies/state_object.gd" id="2_isjdv"]
 [ext_resource type="Script" uid="uid://bakfne7rbociq" path="res://Scenes/Enemies/Minotaur/minotaur_move.gd" id="2_jcmg5"]
 [ext_resource type="Script" uid="uid://ddt47aaa1ejuw" path="res://Scenes/Enemies/Minotaur/minotaur_attack.gd" id="4_f7lsa"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_377ec"]
+size = Vector3(1.9207458, 2.918579, 1.1481934)
 
 [sub_resource type="Animation" id="Animation_jcmg5"]
 length = 0.001
@@ -587,20 +590,26 @@ _data = {
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_f7lsa"]
 radius = 0.55566406
 
-[node name="Enemy" instance=ExtResource("1_pkuws")]
+[node name="Minotaur" instance=ExtResource("1_pkuws")]
+collision_mask = 1
 enemy_type = "Minotaur"
 enemy_mask = ExtResource("2_377ec")
 
 [node name="CSGBox3D" parent="." index="0"]
 visible = false
 
-[node name="StateMachine" parent="." index="2" node_paths=PackedStringArray("initial_state")]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.01512146, 0.95928955, -0.07409668)
+shape = SubResource("BoxShape3D_377ec")
+
+[node name="StateMachine" parent="." index="3" node_paths=PackedStringArray("initial_state")]
 initial_state = NodePath("MinotaurMove")
 
 [node name="StateObject" type="Node" parent="StateMachine" index="0" node_paths=PackedStringArray("enemy", "anim_player")]
 script = ExtResource("2_isjdv")
 enemy = NodePath("../..")
 anim_player = NodePath("../../Minotaur/AnimationPlayer")
+min_dot_product = 0.6
 
 [node name="MinotaurMove" type="Node" parent="StateMachine" index="1" node_paths=PackedStringArray("so")]
 script = ExtResource("2_jcmg5")
@@ -613,12 +622,12 @@ script = ExtResource("4_f7lsa")
 so = NodePath("../StateObject")
 metadata/_custom_type_script = "uid://ddt47aaa1ejuw"
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="3"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="4"]
 libraries = {
 &"": SubResource("AnimationLibrary_isjdv")
 }
 
-[node name="Minotaur" type="Node3D" parent="." index="4"]
+[node name="Minotaur" type="Node3D" parent="." index="5"]
 transform = Transform3D(-0.3, 0, -4.5298744e-08, 0, 0.3, 0, 4.5298744e-08, 0, -0.3, 0, 0.6494336, 0)
 
 [node name="minorig" type="Node3D" parent="Minotaur" index="0"]

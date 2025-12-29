@@ -74,7 +74,7 @@ script = ExtResource("4_rm3sm")
 transform = Transform3D(1, 0, 0, 0, 0.3971479, 0.91775465, 0, -0.91775465, 0.3971479, 0, 17.672, 6.383)
 current = true
 fov = 90.0
-near = 10.0
+near = 1.0
 far = 100.0
 
 [node name="RestartScreen" parent="." instance=ExtResource("5_t7yvt")]

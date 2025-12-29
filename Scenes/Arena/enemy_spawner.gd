@@ -12,7 +12,7 @@ const ENEMIES = [
 	preload("uid://bigdgogdou3vp"), 
 	preload("uid://cwcp6ckkq3arf"),
 	preload("uid://bdnyc3xaifmi6"),
-	preload("uid://van5v5g2804j")
+	preload("uid://c175qc057mbv2")
 ]
 
 func _ready() -> void:

@@ -5,6 +5,7 @@ extends Node
 @export var enemy: CharacterBody3D
 @export var anim_player: AnimationPlayer
 @export var turn_speed: float = .01
+@export var min_dot_product: float = 0.9 #1.0 means only attack when looking directly at player
 
 func distance_player_enemy() -> float:
 	return (Global.player.position - enemy.position).length()

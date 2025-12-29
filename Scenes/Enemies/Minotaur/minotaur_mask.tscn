@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://smt3bwtni5xq"]
+
+[ext_resource type="PackedScene" uid="uid://dnqapeundmmhq" path="res://Assets/Models/MinotaureMask3.glb" id="1_yg5ns"]
+
+[node name="MinotaureMask3" instance=ExtResource("1_yg5ns")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.04369402, 0)
+
+[node name="MINOTAURE_001" parent="." index="0"]
+transform = Transform3D(0.645, 0, 0, 0, 0.645, 0, 0, 0, 0.645, 0, 0.41973662, 0)

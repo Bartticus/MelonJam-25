@@ -1,14 +1,13 @@
-[gd_scene load_steps=21 format=4 uid="uid://van5v5g2804j"]
+[gd_scene load_steps=19 format=4 uid="uid://c175qc057mbv2"]
 
-[ext_resource type="Script" uid="uid://cxjn8xymotref" path="res://Scenes/Enemies/enemy.gd" id="1_exqna"]
-[ext_resource type="PackedScene" uid="uid://dd71dvq1eho4v" path="res://Scenes/Mask/mask.tscn" id="2_v3txi"]
-[ext_resource type="PackedScene" uid="uid://d0rkfhq5pwjgg" path="res://Assets/Models/BetterGoblinzMask.glb" id="3_xpmg4"]
-[ext_resource type="Script" uid="uid://dsixmcw8uyxke" path="res://addons/finite_state_machine/state_machine.gd" id="3_xpyb8"]
+[ext_resource type="PackedScene" uid="uid://qrp2qrl5esb7" path="res://Scenes/Enemies/enemy.tscn" id="1_xpyb8"]
+[ext_resource type="PackedScene" uid="uid://8gu5pyi12tqk" path="res://Scenes/Enemies/Goblin/goblin_mask.tscn" id="3_xpmg4"]
 [ext_resource type="Script" uid="uid://c3yi675gd5wl0" path="res://Scenes/Enemies/state_object.gd" id="4_v3txi"]
 [ext_resource type="Script" uid="uid://cjvheifmiqr8l" path="res://Scenes/Enemies/Goblin/goblin_move.gd" id="5_xpyb8"]
 [ext_resource type="Script" uid="uid://7ta1gdna2rmy" path="res://Scenes/Enemies/Goblin/goblin_attack.gd" id="6_u8yfu"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_mgaaf"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_xpyb8"]
+size = Vector3(1, 2.581543, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nlybv"]
 resource_name = "Material.005"
@@ -38,7 +37,7 @@ cull_mode = 2
 albedo_color = Color(0.55062777, 0.027353272, 0, 1)
 roughness = 0.4
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_rvfh4"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_k5joj"]
 resource_name = "Goblinz2_Sphere_030"
 _surfaces = [{
 "aabb": AABB(-4.1747985, -6.8868637, -2.8597293, 8.517577, 6.1052637, 4.734529),
@@ -118,7 +117,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="Skin" id="Skin_nfsbd"]
+[sub_resource type="Skin" id="Skin_ir108"]
 resource_name = "Skin"
 bind_count = 13
 bind/0/name = &"Bone"
@@ -508,54 +507,50 @@ _data = {
 &"stab": SubResource("Animation_wfh2o")
 }
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xpmg4"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_w0ifk"]
 radius = 0.22167969
 height = 0.9699707
 
-[node name="Enemy" type="CharacterBody3D" groups=["enemies"]]
-collision_layer = 4
-collision_mask = 3
-script = ExtResource("1_exqna")
-mask_scene = ExtResource("2_v3txi")
+[node name="Goblin" instance=ExtResource("1_xpyb8")]
+collision_mask = 1
 enemy_type = "Goblin"
 enemy_mask = ExtResource("3_xpmg4")
 
-[node name="CSGBox3D" type="CSGBox3D" parent="."]
+[node name="CSGBox3D" parent="." index="0"]
 visible = false
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("BoxShape3D_mgaaf")
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7907715, 0)
+shape = SubResource("BoxShape3D_xpyb8")
 
-[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
-script = ExtResource("3_xpyb8")
+[node name="StateMachine" parent="." index="3" node_paths=PackedStringArray("initial_state")]
 initial_state = NodePath("GoblinMove")
-metadata/_custom_type_script = "uid://dsixmcw8uyxke"
 
-[node name="StateObject" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy", "anim_player")]
+[node name="StateObject" type="Node" parent="StateMachine" index="0" node_paths=PackedStringArray("enemy", "anim_player")]
 script = ExtResource("4_v3txi")
 speed = 800
 enemy = NodePath("../..")
 anim_player = NodePath("../../Goblin/AnimationPlayer")
 turn_speed = 1.0
 
-[node name="GoblinMove" type="Node" parent="StateMachine" node_paths=PackedStringArray("so")]
+[node name="GoblinMove" type="Node" parent="StateMachine" index="1" node_paths=PackedStringArray("so")]
 script = ExtResource("5_xpyb8")
 so = NodePath("../StateObject")
-distance_for_attack = 1.5
+distance_for_attack = 2.5
 metadata/_custom_type_script = "uid://cjvheifmiqr8l"
 
-[node name="GoblinAttack" type="Node" parent="StateMachine" node_paths=PackedStringArray("so")]
+[node name="GoblinAttack" type="Node" parent="StateMachine" index="2" node_paths=PackedStringArray("so")]
 script = ExtResource("6_u8yfu")
 so = NodePath("../StateObject")
 metadata/_custom_type_script = "uid://7ta1gdna2rmy"
 
-[node name="Goblin" type="Node3D" parent="."]
+[node name="Goblin" type="Node3D" parent="." index="4"]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0.03983102, 0)
 
-[node name="Armature" type="Node3D" parent="Goblin"]
+[node name="Armature" type="Node3D" parent="Goblin" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, 0.5, 0)
 
-[node name="Skeleton3D" type="Skeleton3D" parent="Goblin/Armature"]
+[node name="Skeleton3D" type="Skeleton3D" parent="Goblin/Armature" index="0"]
 bones/0/name = "Bone"
 bones/0/parent = -1
 bones/0/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
@@ -648,25 +643,25 @@ bones/12/position = Vector3(0, -0.40000004, 0)
 bones/12/rotation = Quaternion(0, 0, 0, 1)
 bones/12/scale = Vector3(1, 1, 1)
 
-[node name="Sphere_021" type="MeshInstance3D" parent="Goblin/Armature/Skeleton3D"]
+[node name="Sphere_021" type="MeshInstance3D" parent="Goblin/Armature/Skeleton3D" index="0"]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 4.241805, 0)
-mesh = SubResource("ArrayMesh_rvfh4")
-skin = SubResource("Skin_nfsbd")
+mesh = SubResource("ArrayMesh_k5joj")
+skin = SubResource("Skin_ir108")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Goblin"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Goblin" index="1"]
 libraries = {
 &"": SubResource("AnimationLibrary_xfg1y")
 }
 autoplay = "Walk"
 speed_scale = 1.4
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="Area3D" type="Area3D" parent="." index="5"]
 collision_layer = 0
 collision_mask = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.29369092, 0.3718897, -0.39660645)
-shape = SubResource("CapsuleShape3D_xpmg4")
+shape = SubResource("CapsuleShape3D_w0ifk")
 disabled = true
 
 [connection signal="body_entered" from="Area3D" to="StateMachine/GoblinAttack" method="_on_area_3d_body_entered"]

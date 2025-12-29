@@ -25,10 +25,12 @@ func enter():
 	so.anim_player.play("dash")
 	
 	anim_player_2.play("Bite")
-	await so.anim_player.animation_finished
+	await get_tree().create_timer(0.75).timeout
 	anim_player_2.play_backwards("Bite")
-	await anim_player_2.animation_finished
+	
 	_anim_ended()
+	
+
 func exit():
 	pass
 func process(_delta: float):
@@ -38,6 +40,8 @@ func physics_process(_delta: float):
 
 func _anim_ended():
 	area.monitoring = false
+	
+	await so.anim_player.animation_finished
 	anim_player_2.play("Walk")
 	transitioned.emit(self, "WolfWalk")
 

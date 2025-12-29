@@ -4,6 +4,7 @@ class_name WolfWalk
 @export var so: StateObject
 @export var distance_for_attack = 3
 
+
 func enter():
 	pass
 func exit():
@@ -15,5 +16,7 @@ func physics_process(delta: float):
 	so.enemy.velocity = direction * so.speed * delta
 	so.enemy.move_and_slide()
 	
-	if so.distance_player_enemy() < distance_for_attack:
+	var dot_product = -so.enemy.global_transform.basis.z.dot(direction)
+	
+	if so.distance_player_enemy() < distance_for_attack and dot_product > so.min_dot_product:
 		transitioned.emit(self, "WolfAttack")

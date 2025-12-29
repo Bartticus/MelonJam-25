@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://8gu5pyi12tqk"]
+
+[ext_resource type="PackedScene" uid="uid://d0rkfhq5pwjgg" path="res://Assets/Models/BetterGoblinzMask.glb" id="1_0tmge"]
+
+[node name="BetterGoblinzMask" instance=ExtResource("1_0tmge")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.10388279, 0)
+
+[node name="Sphere_027" parent="." index="0"]
+transform = Transform3D(0.465, 0, 0, 0, 0.465, 0, 0, 0, 0.465, 0, 0.5797914, 0)

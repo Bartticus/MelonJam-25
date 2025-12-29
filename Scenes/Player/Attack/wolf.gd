@@ -13,7 +13,6 @@ func attack():
 	if player.can_move:
 		player.can_move = false
 		area.monitoring = true
-		player.get_node("PlayerCollision").disabled = true
 		timer.start()
 
 func _physics_process(_delta: float) -> void:
@@ -24,4 +23,3 @@ func _physics_process(_delta: float) -> void:
 func _on_timer_timeout() -> void:
 	area.monitoring = false
 	player.can_move = true
-	player.get_node("PlayerCollision").disabled = false

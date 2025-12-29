@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://strfdhv6f26f"]
+
+[ext_resource type="PackedScene" uid="uid://jf80o8tkrrcp" path="res://Assets/Models/DragonMask.glb" id="1_0rpa3"]
+
+[node name="DragonMask" instance=ExtResource("1_0rpa3")]
+
+[node name="dinosor_001" parent="." index="0"]
+transform = Transform3D(0.556, 0, 0, 0, 0.556, 0, 0, 0, 0.556, 0, 1.0949967, 0)
