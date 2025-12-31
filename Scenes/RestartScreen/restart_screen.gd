@@ -7,6 +7,9 @@ extends CanvasLayer
 
 var skip: bool = false
 
+func _ready() -> void:
+	get_tree().paused = false
+
 func _on_visibility_changed() -> void:
 	if skip: return
 	
@@ -14,12 +17,9 @@ func _on_visibility_changed() -> void:
 		lose_music.play()
 		label.show()
 		label.text += str(Global.score)
-	
-
 
 func _on_button_mouse_entered() -> void:
 	sfx_hover.play()
-
 
 func _on_restart_button_pressed() -> void:
 	sfx.play()
