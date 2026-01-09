@@ -23,3 +23,7 @@ shape = SubResource("BoxShape3D_mgaaf")
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("3_gx76c")
 metadata/_custom_type_script = "uid://dsixmcw8uyxke"
+
+[node name="InvulnTimer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true

@@ -113,6 +113,12 @@ func _input(event: InputEvent) -> void:
 
 func die():
 	if not invuln_timer.is_stopped(): return #Don't get hit immediately after getting hit
+	
+	#hitstun
+	Engine.time_scale = 0.01
+	var tween: Tween = get_tree().create_tween()
+	tween.tween_property(Engine, "time_scale", 1.0, hitstun_duration)
+	
 	if current_mask != "Default": #If wearing a mask, don't die
 		drop_mask()
 		return
@@ -141,7 +147,3 @@ func drop_mask() -> void:
 	var camera: MainCamera = get_viewport().get_camera_3d()
 	camera.screen_shake(2,4)
 	
-	#hitstun
-	get_tree().paused = true
-	await get_tree().create_timer(hitstun_duration).timeout
-	get_tree().paused = false

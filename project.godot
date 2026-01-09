@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="MelonJam-25"
+config/name="Pit of Masks_MelonJam-25"
 run/main_scene="uid://b4o23ec1ofw0u"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="uid://dp8ofstyvkmpt"
@@ -77,10 +77,6 @@ pick_up={
 3d_physics/layer_3="Enemy"
 3d_physics/layer_4="Weapon"
 3d_physics/layer_5="Pickup"
-
-[physics]
-
-common/physics_interpolation=true
 
 [rendering]
 

@@ -10,8 +10,12 @@ extends CharacterBody3D
 @onready var invuln_timer: Timer = $InvulnTimer
 
 @export var health: int = 1
+var init_health: int
 
 var hitstun_duration: float = 0.1
+
+func _ready() -> void:
+	init_health = health
 
 func _physics_process(_delta: float) -> void:
 	pass
@@ -29,20 +33,15 @@ func die() -> void:
 	camera.screen_shake(1,2)
 	
 	#hitstun
-	get_tree().paused = true
-	await get_tree().create_timer(hitstun_duration).timeout
-	get_tree().paused = false
+	Engine.time_scale = 0.01
+	var tween: Tween = get_tree().create_tween()
+	tween.tween_property(Engine, "time_scale", 1.0, hitstun_duration)
 	
 	if health > 0:
 		await get_tree().create_timer(0.1).timeout
 		hit_flash_mesh.hide()
 		default_mesh.show()
 		return
-	#death animation
-	#double hitstun on death
-	get_tree().paused = true
-	await get_tree().create_timer(hitstun_duration).timeout
-	get_tree().paused = false
 	
 	#drop mask
 	if randi_range(1,5) == 5 or Global.score == 0: #1 in 5 chance of dropping mask, except the first kill
