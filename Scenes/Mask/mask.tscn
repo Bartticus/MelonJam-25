@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://oxjhhj6uhl14" path="res://Scenes/Mask/mask.gd" id="1_q0cms"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_60syn"]
+radius = 1.0
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_q0cms"]
 load_path = "res://.godot/imported/texture_03.png-552b8afc0dd456df44395dde2d3c8c68.s3tc.ctex"
@@ -128,7 +129,7 @@ tracks/0/path = NodePath("CollisionShape3D:disabled")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(0, 0.9),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]

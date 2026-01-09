@@ -44,7 +44,7 @@ func die() -> void:
 		return
 	
 	#drop mask
-	if randi_range(1,5) == 5 or Global.score == 0: #1 in 5 chance of dropping mask, except the first kill
+	if randi_range(1,4) == 1 or Global.score == 0: #1 in 4 chance of dropping mask, except the first kill
 		var mask = mask_scene.instantiate() as Mask
 		mask.spawn_point = global_position
 		mask.mask_type = enemy_type
